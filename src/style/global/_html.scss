@@ -1,0 +1,6 @@
+@use '../app';
+
+html {
+  font-size: app.pxToRem(app.$base-font-size);
+  background-color: app.$color-white;
+}

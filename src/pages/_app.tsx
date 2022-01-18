@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import Head from 'next/head';
+import 'src/style/global/index.scss';
 
 interface AppProps {
   Component: any

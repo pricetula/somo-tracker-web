@@ -1,0 +1,8 @@
+@use '../app';
+@use './html';
+
+* {
+  @include app.no-padding-margin;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}

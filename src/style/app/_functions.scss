@@ -1,0 +1,56 @@
+@use 'sass:math';
+@use 'sass:meta';
+@use './variable';
+
+/**
+  isPXCompatible(val)
+  function used to check whether a given value is PX compatible
+*/
+@function isPXCompatible($v) {
+  @return math.compatible(1px, $v);
+}
+
+/**
+  isList(val)
+  function used to check whether a given value is a list type which can have sequences separated by comma or space like :-
+  (1px, 1px) or (1px 1px) or ()
+*/
+@function isList($v) {
+  @return meta.type-of($v) == 'list';
+}
+
+/**
+  isNumber(val)
+  function used to check whether a given value is a number such as 1px, 1rem etc
+*/
+@function isNumber($v) {
+  @return meta.type-of($v) == 'number';
+}
+
+/**
+  pxToRem(val)
+  function used to convert px values to rems
+*/
+@function pxToRem($v) {
+  @if isNumber($v) {
+    @return pixelToRemConverter($v);
+  } @else if isList($v) {
+    $retVal: ();
+    @each $i in $v {
+      $retVal: append($retVal, pixelToRemConverter($i));
+    }
+    @return $retVal;
+  }
+  @return $v;
+}
+
+/**
+  pixelToRemConverter(val)
+  function used to actually calculate the values by taking in px numbers or lists and converting to rem values based on base font size
+*/
+@function pixelToRemConverter($v) {
+  @if isPXCompatible($v) and isPXCompatible(variable.$base-font-size) {
+    @return math.div($v, variable.$base-font-size) * 1rem;
+  }
+  @return $v;
+}
