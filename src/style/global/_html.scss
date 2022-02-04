@@ -4,3 +4,7 @@ html {
   font-size: app.pxToRem(app.$base-font-size);
   background-color: app.$color-primary-light-4;
 }
+
+ul {
+  list-style: none;
+}
