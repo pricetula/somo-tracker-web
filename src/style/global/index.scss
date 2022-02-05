@@ -51,10 +51,10 @@ html {
   .banner {
    background-color: $light-grey-0;
    height: 500px;
-   margin: 50px 80px 100px;
+   margin: 50px 80px 400px;
    display: flex;
    border-radius: 8px;
-   padding: 0 200px;
+   padding: 0 300px;
 
    .image-wrapper {
     display: flex;
@@ -63,9 +63,39 @@ html {
     flex-grow: 2;
 
     .image {
-      background-color: blue;
+      position: relative;
+      border: 2px solid $primary-0;
       height: 300px;
       width: 400px;
+
+      &::after,
+      &::before {
+        content: '';
+        top: 0;
+        left: 0;
+        position: absolute;
+        width: 80%;
+        animate: transform .2s;
+      }
+
+      &::before {
+        top: 10%;
+        left: 20%;
+        height: 80%;
+        width: 80%;
+        border: 2px solid $secondary-0;
+        transform: rotate(10deg);
+      }
+
+      &::after {
+        top: 10%;
+        left: 20%;
+        height: 80%;
+        height: 50%;
+        width: 50%;
+        border: 2px solid $error-0;
+        transform: rotate(40deg);
+      }
     }
   }
 
@@ -93,15 +123,16 @@ html {
     &__logo {
       font-weight: bold;
       position: relative;
+      font-size: 20px;
       &::after {
         content: '';
         position: absolute;
-        top: 0px;
-        left: -22px;
-        height: 20px;
-        width: 20px;
-        border-radius: 50%;
-        background-color: $primary-0;
+        background-image: url(/icon.svg);
+        background-size: cover;
+        top: -2px;
+        left: -30px;
+        height: 26px;
+        width: 26px;
       }
     }
 

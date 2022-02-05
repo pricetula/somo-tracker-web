@@ -38,6 +38,7 @@ class App extends React.Component<AppProps> {
             href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
             rel="stylesheet"
           />
+          <title>Ultimate student perfomance tracking system</title>
         </Head>
         <Component {...pageProps} />
       </>

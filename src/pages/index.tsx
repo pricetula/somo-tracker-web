@@ -23,7 +23,7 @@ function Home() {
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, obcaecati.</p>
         </div>
         <div className="image-wrapper">
-          <div className="image">image</div>
+          <div className="image" />
         </div>
       </div>
       <div className="primary">
