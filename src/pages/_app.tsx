@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import Head from 'next/head';
+import Layout from 'src/components/Layout';
 import 'src/style/global/index.scss';
 
 interface AppProps {
@@ -40,7 +41,9 @@ class App extends React.Component<AppProps> {
           />
           <title>Ultimate student perfomance tracking system</title>
         </Head>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </>
     );
   }
