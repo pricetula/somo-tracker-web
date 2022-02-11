@@ -1,10 +1,16 @@
 import React, { ReactNode } from 'react';
+import TopNav from '../TopNav';
+import Footer from '../Footer';
 
 function Layout({ children }: { children: ReactNode }) {
   return (
-    <main>
-      {children}
-    </main>
+    <>
+      <TopNav />
+      <main>
+        {children}
+      </main>
+      <Footer />
+    </>
   )
 };
 

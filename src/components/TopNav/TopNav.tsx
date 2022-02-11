@@ -2,7 +2,7 @@ import React from 'react';
 
 function TopNav() {
   return (
-    <nav>
+    <nav aria-label="Primary">
       nav
     </nav>
   )
