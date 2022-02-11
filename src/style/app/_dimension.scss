@@ -1,3 +1,5 @@
+@use './functions';
+
 @mixin no-padding {
   padding: 0;
 }
@@ -9,4 +11,9 @@
 @mixin no-padding-margin {
   @include no-padding;
   @include no-margin;
+}
+
+@mixin box($v) {
+  height:  functions($v);
+  width:  functions($v);
 }

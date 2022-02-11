@@ -1,9 +1,10 @@
 import React from 'react';
+import Logo from '../Logo';
 
 function TopNav() {
   return (
     <nav aria-label="Primary">
-      nav
+      <Logo />
     </nav>
   )
 };
