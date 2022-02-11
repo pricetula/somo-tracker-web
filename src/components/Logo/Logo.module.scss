@@ -1,0 +1,100 @@
+@use 'sass:math';
+@use '/src/style/app/functions';
+
+$logo-dimension: 1em;
+$logo-text-space: 0;
+$icon-offset: 0.18em;
+$animation-duration: 2s;
+$animation-turn: -0.1turn;
+$text-translate-y: 0.1em;
+
+@keyframes text-animation {
+  0% {
+    opacity: 0.8;
+    transform: scale(94%) translateY(0.06em);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(100%) translateY($text-translate-y);
+  }
+}
+
+@keyframes top-icon-animation {
+  0% {
+    opacity: 0;
+    transform: rotate($animation-turn);
+  }
+  70% {
+    transform: rotate(0.008turn);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0);
+  }
+}
+
+@keyframes bottom-icon-animation {
+  0% {
+    opacity: 0;
+    transform: rotate($animation-turn);
+  }
+  60% {
+    transform: rotate(0.0095turn);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0);
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: functions.pxToRem(20px);
+
+  .text {
+    color: #170633;
+    font-size: 1em;
+    margin-left: 0.2em;
+    animation-name: text-animation;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    transform: translateY($text-translate-y);
+  }
+
+  .textWithHiddenIcon {
+    margin-left: 0;
+  }
+
+  .icon {
+    position: relative;
+    margin: 0 $icon-offset;
+    height: $logo-dimension;
+    width: $logo-dimension;
+
+    &::after,
+    &::before {
+      content: '';
+      height: 0.35em;
+      width: 96%;
+      border-radius: 0.35em;
+      position: absolute;
+      transform-origin: 0.1em 0.2em;
+      background-color:#6917f1;
+      animation-timing-function: ease-in-out;
+    }
+
+    &::before {
+      animation-name: top-icon-animation;
+      animation-duration: $animation-duration;
+      right: calc(-1 * #{$icon-offset});
+    }
+
+    &::after {
+      bottom: 0;
+      animation-name: bottom-icon-animation;
+      animation-duration: $animation-duration;
+      left: calc(-1 * #{$icon-offset});
+    }
+  }
+}
