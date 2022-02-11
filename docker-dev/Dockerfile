@@ -10,13 +10,13 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # Copy package.json yarn.lock files over to the working directory of the image
-COPY package.json yarn.lock ./
+COPY ../package.json ../yarn.lock ./
 
 # Run the install command
 RUN yarn install
 
 # Copy files to the image
-COPY . .
+COPY .. .
 
 # expose port 3000 to the host machine
 # EXPOSE 3000
@@ -37,3 +37,7 @@ CMD ["yarn", "dev"]
 #   sudo docker images
 # Delete an image
 #   sudo docker image rm repository_name
+# List all images which have not tag or no repository name dangling
+#   sudo docker images -f dangling=true
+# Delete all dangling images
+#   sudo docker rmi $(sudo docker images -f dangling=true -q)
