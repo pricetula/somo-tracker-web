@@ -1,170 +1,21 @@
 @use '../app';
-@use './html';
-
-a{
-  text-decoration: none;
-}
-
-$primary-0: #6917f1;
-// $primary-0: #0c5bcf;
-$secondary-0: #0ccfc5;
-$error-0: #ff0055;
-$warning-0: #ffb300;
-
-$light-grey-0: #f3f3f3;
 
 * {
   @include app.no-padding-margin;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
+  color: app.$color-dark-500;
 }
 
 html {
-  background-color: white;
+  background-color: app.$color-primary-100;
+  font-size: app.pxToRem(app.$base-font-size);
 }
 
-.demo {
-  .warning,
-  .error,
-  .primary,
-  .secondary {
-    padding: 10px 50px;
-    margin: 50px 0;
-    max-width: 400px;
-  }
+ul {
+  list-style: none;
+}
 
-  .primary {
-    max-width: 800px;
-    background-color: $primary-0;
-  }
-
-  .secondary {
-    background-color: $secondary-0;
-  }
-
-  .error {
-    max-width: 150px;
-    background-color: $error-0;
-  }
-
-  .warning {
-    max-width: 130px;
-    background-color: $warning-0;
-  }
-
-  .banner {
-   background-color: $light-grey-0;
-   height: 500px;
-   margin: 50px 80px 400px;
-   display: flex;
-   border-radius: 8px;
-   padding: 0 300px;
-
-   .image-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 2;
-
-    .image {
-      position: relative;
-      border: 2px solid $primary-0;
-      height: 300px;
-      width: 400px;
-
-      &::after,
-      &::before {
-        content: '';
-        top: 0;
-        left: 0;
-        position: absolute;
-        width: 80%;
-        animate: transform .2s;
-      }
-
-      &::before {
-        top: 10%;
-        left: 20%;
-        height: 80%;
-        width: 80%;
-        border: 2px solid $secondary-0;
-        transform: rotate(10deg);
-      }
-
-      &::after {
-        top: 10%;
-        left: 20%;
-        height: 80%;
-        height: 50%;
-        width: 50%;
-        border: 2px solid $error-0;
-        transform: rotate(40deg);
-      }
-    }
-  }
-
-   .description-wrapper {
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
-     min-width: 600px;
-
-     p {
-       max-width: 200px;
-     }
-   }
-  }
-
-  .nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 50px;
-    height: 70px;
-    background-color: $light-grey-0;
-
-    &__logo {
-      font-weight: bold;
-      position: relative;
-      font-size: 20px;
-      &::after {
-        content: '';
-        position: absolute;
-        background-image: url(/icon.svg);
-        background-size: cover;
-        top: -2px;
-        left: -30px;
-        height: 26px;
-        width: 26px;
-      }
-    }
-
-    &__link-wrapper {
-      &,
-      ul {
-        display: flex;
-        align-items: center;
-      }
-
-      ul {
-        &:first-of-type {
-          margin-right: 80px;
-        }
-
-        li:not(:last-of-type) {
-          padding-right: 20px;
-        }
-      }
-
-      .profile-links {
-        li:last-of-type {
-          background-color: $primary-0;
-          padding: 10px 20px;
-          color: white;
-          border-radius: 9px;
-        }
-      }
-    }
-  }
+a{
+  text-decoration: none;
 }

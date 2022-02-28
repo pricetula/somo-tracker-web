@@ -1,5 +1,6 @@
 @use 'sass:math';
 @use '/src/style/app/functions';
+@use '/src/style/app/color';
 
 $logo-dimension: 1em;
 $logo-text-space: 0;
@@ -53,7 +54,7 @@ $text-translate-y: 0.1em;
   font-size: functions.pxToRem(20px);
 
   .text {
-    color: #170633;
+    color: color.$color-dark-500;
     font-size: 1em;
     margin-left: 0.2em;
     animation-name: text-animation;
@@ -80,7 +81,7 @@ $text-translate-y: 0.1em;
       border-radius: 0.35em;
       position: absolute;
       transform-origin: 0.1em 0.2em;
-      background-color:#6917f1;
+      background-color:color.$color-primary-400;
       animation-timing-function: ease-in-out;
     }
 
