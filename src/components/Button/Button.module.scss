@@ -1,0 +1,10 @@
+@use '/src/style/app/variable';
+@use '/src/style/app/functions';
+@use '/src/style/app/color';
+@use '/src/style/app/flex';
+
+.button {
+  background-color: none;
+  border: none;
+  cursor: pointer;
+}

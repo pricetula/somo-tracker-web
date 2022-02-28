@@ -3,8 +3,10 @@
 * {
   @include app.no-padding-margin;
   box-sizing: border-box;
+  line-height: 1;
   font-family: 'Roboto', sans-serif;
   color: app.$color-dark-500;
+  outline-color: app.$color-dark-200;
 }
 
 html {
