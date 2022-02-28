@@ -1,0 +1,12 @@
+@use '/src/style/app/variable';
+@use '/src/style/app/functions';
+@use '/src/style/app/color';
+@use '/src/style/app/flex';
+
+.nav {
+  @include flex.flexbox;
+  @include flex.align-items(center);
+  background-color: color.$color-primary-100;
+  height: functions.pxToRem(variable.$nav-bar-height);
+  padding: functions.pxToRem(0px 20px);
+}
