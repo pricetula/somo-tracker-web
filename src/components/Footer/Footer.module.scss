@@ -1,0 +1,9 @@
+@use '/src/style/app/variable';
+@use '/src/style/app/functions';
+@use '/src/style/app/color';
+
+.footer {
+  min-height: functions.pxToRem(variable.$footer-height);
+  padding: functions.pxToRem(20px);
+  background-color: color.$color-primary-100;
+}

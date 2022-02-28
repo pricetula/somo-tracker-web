@@ -6,6 +6,10 @@
 .nav {
   @include flex.flexbox;
   @include flex.align-items(center);
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  width: 100%;
   background-color: color.$color-primary-100;
   height: functions.pxToRem(variable.$nav-bar-height);
   padding: functions.pxToRem(0px 20px);
