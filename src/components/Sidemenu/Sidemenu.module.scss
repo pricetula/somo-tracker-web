@@ -1,0 +1,46 @@
+@use 'sass:math';
+@use '/src/style/app/variable';
+@use '/src/style/app/functions';
+@use '/src/style/app/color';
+@use '/src/style/app/flex';
+
+$anime-duration: 0.4s;
+$bg-duration: math.div($anime-duration, 2.1);
+$content-width: functions.pxToRem(300px);
+$timing-func: cubic-bezier(0.45, 0, 0.55, 1);
+
+.toggler {
+  position: absolute;
+  right: 0;
+}
+
+.sidemenuWrapper {
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  visibility: hidden;
+  transition: visibility 0s $anime-duration, background-color $bg-duration;
+
+  .sidemenu {
+    background-color: white;
+    width: $content-width;
+    height: 100%;
+    padding: functions.pxToRem(26px 10px 20px);
+    transform: translateX(-$content-width);
+    transition: all $anime-duration;
+    transition-timing-function: $timing-func;
+  }
+
+  &Visible {
+    visibility: visible;
+    transition: visibility 0s 0s, background-color $bg-duration;
+    background-color: color.$overlay-color;
+
+    .sidemenu {
+      transform: translateX(0);
+    }
+  }
+}
