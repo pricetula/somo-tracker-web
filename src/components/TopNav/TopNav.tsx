@@ -11,9 +11,11 @@ function TopNav() {
       <section className={style.logoSidebarbuttonWrapper}>
         <Button
           customClass={style.sidebarbutton}
-          onClick={() => sideMenu.setIsOpen(true)}
+          onClick={() => sideMenu.setIsOpen(!sideMenu.isOpen)}
         >
-          <i className="material-icons">menu</i>
+          <i className="material-icons">
+            {sideMenu.isOpen ? 'close' : 'menu'}
+          </i>
         </Button>
         <Logo />
       </section>
