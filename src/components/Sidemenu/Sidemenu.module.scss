@@ -32,6 +32,7 @@ $timing-func: cubic-bezier(0.45, 0, 0.55, 1);
     transform: translateX(-$content-width);
     transition: all $anime-duration;
     transition-timing-function: $timing-func;
+    box-shadow: color.$shadow-light-right;
   }
 
   &Visible {
@@ -40,7 +41,7 @@ $timing-func: cubic-bezier(0.45, 0, 0.55, 1);
     background-color: color.$overlay-color;
 
     .sidemenu {
-      transform: translateX(0);
+      transform: translateX(functions.pxToRem(-2px));
     }
   }
 }
