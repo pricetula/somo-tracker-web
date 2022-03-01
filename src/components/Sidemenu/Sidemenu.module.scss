@@ -16,10 +16,10 @@ $timing-func: cubic-bezier(0.45, 0, 0.55, 1);
 
 .sidemenuWrapper {
   z-index: 3;
-  top: 0;
+  top: functions.pxToRem(variable.$nav-bar-height);
   left: 0;
   width: 100%;
-  height: 100%;
+  height: calc(100vh - #{functions.pxToRem(variable.$nav-bar-height)});
   position: fixed;
   visibility: hidden;
   transition: visibility 0s $anime-duration, background-color $bg-duration;
@@ -32,7 +32,6 @@ $timing-func: cubic-bezier(0.45, 0, 0.55, 1);
     transform: translateX(-$content-width);
     transition: all $anime-duration;
     transition-timing-function: $timing-func;
-    box-shadow: color.$shadow-light-right;
   }
 
   &Visible {
