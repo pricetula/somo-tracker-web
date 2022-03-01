@@ -37,6 +37,7 @@ $color-dark-200: #D3D3D3;
 $color-dark-100: #E7EAF3;
 
 $shadow-light: functions.pxToRem(0px) functions.pxToRem(2px) functions.pxToRem(4px) functions.pxToRem(2px) rgba(206, 200, 216, 0.25);
-$shadow-light: functions.pxToRem(0px) functions.pxToRem(4px) functions.pxToRem(4px) functions.pxToRem(1px) rgba(49, 38, 68, 0.25);
+$shadow-dark: functions.pxToRem(0px) functions.pxToRem(4px) functions.pxToRem(4px) functions.pxToRem(1px) rgba(49, 38, 68, 0.25);
+$shadow-light-right: functions.pxToRem(1px 0px 4px 0px) rgba(49, 38, 68, 0.25);
 
 $overlay-color: rgba($color-primary-400, 0.45);
