@@ -6,7 +6,7 @@
 
 $anime-duration: 0.4s;
 $bg-duration: math.div($anime-duration, 2.1);
-$content-width: functions.pxToRem(300px);
+$sidemenu-width: functions.pxToRem(300px);
 $timing-func: cubic-bezier(0.45, 0, 0.55, 1);
 
 .toggler {
@@ -24,14 +24,28 @@ $timing-func: cubic-bezier(0.45, 0, 0.55, 1);
   visibility: hidden;
   transition: visibility 0s $anime-duration, background-color $bg-duration;
 
-  .dialog {
+  .dialogContent {
     background-color: white;
-    width: $content-width;
-    height: 100%;
-    padding: functions.pxToRem(26px 10px 20px);
-    transform: translateX(-$content-width);
     transition: all $anime-duration;
     transition-timing-function: $timing-func;
+
+    &.leftsideMenu,
+    &.rightsideMenu {
+      position: absolute;
+      top: 0;
+      width: $sidemenu-width;
+      height: 100%;
+    }
+
+    &.leftsideMenu {
+      left: 0;
+      transform: translateX(-$sidemenu-width);
+    }
+
+    &.rightsideMenu {
+      right: 0;
+      transform: translateX($sidemenu-width);
+    }
   }
 
   &Visible {
@@ -39,8 +53,14 @@ $timing-func: cubic-bezier(0.45, 0, 0.55, 1);
     transition: visibility 0s 0s, background-color $bg-duration;
     background-color: color.$overlay-color;
 
-    .dialog {
-      transform: translateX(functions.pxToRem(-2px));
+    .dialogContent {
+      &.leftsideMenu {
+        transform: translateX(functions.pxToRem(-2px));
+      }
+
+      &.rightsideMenu {
+        transform: translateX(0);
+      }
     }
   }
 }

@@ -1,20 +1,20 @@
 import React from 'react';
-import { DialogOpenContext } from 'src/context/dialogOpen';
+import { SideMenuOpenContext } from 'src/context/sideMenuOpen';
 import Button from '../Button';
 import Logo from '../Logo';
 import style from './TopNav.module.scss';
 
 function TopNav() {
-  const dialog = React.useContext(DialogOpenContext);
+  const sideMenu = React.useContext(SideMenuOpenContext);
   return (
     <nav className={style.nav} aria-label="Primary">
       <section className={style.logoSidebarbuttonWrapper}>
         <Button
           customClass={style.sidebarbutton}
-          onClick={() => dialog.setIsOpen(!dialog.isOpen)}
+          onClick={() => sideMenu.setIsOpen(!sideMenu.isOpen)}
         >
           <i className="material-icons">
-            {dialog.isOpen ? 'close' : 'menu'}
+            {sideMenu.isOpen ? 'close' : 'menu'}
           </i>
         </Button>
         <Logo />

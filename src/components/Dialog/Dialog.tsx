@@ -1,19 +1,52 @@
 import React from 'react';
-import { DialogOpenContext } from 'src/context/dialogOpen';
 import style from './Dialog.module.scss';
 
-const Dialog = () => {
-  const dialog = React.useContext(DialogOpenContext);
+export enum Dialogvariant {
+  LEFTSIDEMENU = 'leftsideMenu',
+  RIGHTSIDEMENU = 'rightsideMenu',
+  DEFAULT = 'default',
+}
+
+interface Dialogprops {
+  children: React.ReactNode,
+  variant: Dialogvariant,
+  onBackdropClick(): void,
+  isOpen: boolean,
+}
+
+const Dialog = ({ children, variant, onBackdropClick, isOpen }: Dialogprops) => {
+  let contentClassName = `${style.dialogContent} `;
+
+  switch (variant) {
+    case Dialogvariant.LEFTSIDEMENU:
+      contentClassName += style.leftsideMenu;
+      break;
+
+    case Dialogvariant.RIGHTSIDEMENU:
+      contentClassName += style.rightsideMenu;
+      break;
+
+    default:
+      contentClassName += style.default;
+      break;
+  }
+
   return (
     <aside
-      onClick={() => dialog.setIsOpen(false)}
-      className={`${style.dialogWrapper} ${dialog.isOpen ? style.dialogWrapperVisible : ''}`}
+      onClick={onBackdropClick}
+      className={`${style.dialogWrapper} ${isOpen ? style.dialogWrapperVisible : ''}`}
     >
-      <section className={style.dialog} role="content">
-        dd
+      <section className={contentClassName} role="content">
+        {children}
       </section>
     </aside>
   );
+}
+
+Dialog.defaultProps = {
+  variant: Dialogvariant.DEFAULT,
+  onBackdropClick: () => null,
+  isOpen: false,
 }
 
 export default Dialog;
