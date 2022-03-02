@@ -24,10 +24,41 @@ $timing-func: cubic-bezier(0.45, 0, 0.55, 1);
   visibility: hidden;
   transition: visibility 0s $anime-duration, background-color $bg-duration;
 
+  &Dialog {
+    @include flex.flexbox;
+    @include flex.justify-content(center);
+  }
+
+  &Visible {
+    visibility: visible;
+    transition: visibility 0s 0s, background-color $bg-duration;
+    background-color: color.$overlay-color;
+
+    .dialogContent {
+      &.leftsideMenu {
+        transform: translateX(functions.pxToRem(-2px));
+      }
+
+      &.rightsideMenu {
+        transform: translateX(0);
+      }
+    }
+  }
+
   .dialogContent {
     background-color: white;
     transition: all $anime-duration;
     transition-timing-function: $timing-func;
+
+    &.default {
+      position: relative;
+      border: none;
+      max-width: 98%;
+      min-width: functions.pxToRem(340px);
+      min-height: functions.pxToRem(300px);
+      border-radius: functions.pxToRem(8px);
+      margin-top: functions.pxToRem(100px);
+    }
 
     &.leftsideMenu,
     &.rightsideMenu {
@@ -45,22 +76,6 @@ $timing-func: cubic-bezier(0.45, 0, 0.55, 1);
     &.rightsideMenu {
       right: 0;
       transform: translateX($sidemenu-width);
-    }
-  }
-
-  &Visible {
-    visibility: visible;
-    transition: visibility 0s 0s, background-color $bg-duration;
-    background-color: color.$overlay-color;
-
-    .dialogContent {
-      &.leftsideMenu {
-        transform: translateX(functions.pxToRem(-2px));
-      }
-
-      &.rightsideMenu {
-        transform: translateX(0);
-      }
     }
   }
 }

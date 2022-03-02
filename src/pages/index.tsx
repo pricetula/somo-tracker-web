@@ -1,11 +1,3 @@
-import React from 'react';
-
-function Home() {
-  return (
-    <section className="demo">
-      home
-    </section>
-  );
-}
+import Home from 'src/components/page/Home';
 
 export default Home;

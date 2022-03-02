@@ -16,7 +16,9 @@ interface Dialogprops {
 }
 
 const Dialog = ({ children, variant, onBackdropClick, isOpen }: Dialogprops) => {
-  let htmlEl: keyof JSX.IntrinsicElements = 'aside'
+  let wrapperHtmlEl: keyof JSX.IntrinsicElements = 'aside';
+  let contentHtmlEl: keyof JSX.IntrinsicElements = 'section';
+  let wrapperClassName = `${style.dialogWrapper} ${isOpen ? style.dialogWrapperVisible : ''} `;
   let contentClassName = `${style.dialogContent} `;
 
   switch (variant) {
@@ -29,20 +31,27 @@ const Dialog = ({ children, variant, onBackdropClick, isOpen }: Dialogprops) => 
       break;
 
     default:
-      htmlEl = 'dialog';
+      wrapperHtmlEl = 'div';
+      contentHtmlEl = 'dialog';
       contentClassName += style.default;
+      wrapperClassName += style.dialogWrapperDialog
       break;
   }
 
   return (
     <DynamicElement
-      el={htmlEl}
+      el={wrapperHtmlEl}
       onClick={onBackdropClick}
-      className={`${style.dialogWrapper} ${isOpen ? style.dialogWrapperVisible : ''}`}
+      className={wrapperClassName}
     >
-      <section className={contentClassName} role="content">
+      <DynamicElement<'dialog'>
+        el={contentHtmlEl}
+        className={contentClassName}
+        open={isOpen}
+        onClick={(e) => { e.stopPropagation(); }}
+      >
         {children}
-      </section>
+      </DynamicElement>
     </DynamicElement>
   );
 }
