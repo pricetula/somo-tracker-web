@@ -3,6 +3,7 @@
 @use '/src/style/app/functions';
 @use '/src/style/app/color';
 @use '/src/style/app/flex';
+@use '/src/style/app/breakpoints';
 
 $anime-duration: 0.4s;
 $bg-duration: math.div($anime-duration, 2.1);
@@ -24,40 +25,27 @@ $timing-func: cubic-bezier(0.45, 0, 0.55, 1);
   visibility: hidden;
   transition: visibility 0s $anime-duration, background-color $bg-duration;
 
-  &Dialog {
-    @include flex.flexbox;
-    @include flex.justify-content(center);
-  }
-
-  &Visible {
-    visibility: visible;
-    transition: visibility 0s 0s, background-color $bg-duration;
-    background-color: color.$overlay-color;
-
-    .dialogContent {
-      &.leftsideMenu {
-        transform: translateX(functions.pxToRem(-2px));
-      }
-
-      &.rightsideMenu {
-        transform: translateX(0);
-      }
-    }
-  }
-
   .dialogContent {
     background-color: white;
     transition: all $anime-duration;
     transition-timing-function: $timing-func;
 
     &.default {
+      display: block;
       position: relative;
       border: none;
       max-width: 98%;
-      min-width: functions.pxToRem(340px);
+      opacity: 0;
+      transform: translateY(functions.pxToRem(40px));
+      min-width: functions.pxToRem(368px);
       min-height: functions.pxToRem(300px);
+      max-height: functions.pxToRem(600px);
       border-radius: functions.pxToRem(8px);
-      margin-top: functions.pxToRem(100px);
+      margin-top: functions.pxToRem(40px);
+
+      @include breakpoints.device(tablet) {
+        margin-top: functions.pxToRem(100px);
+      }
     }
 
     &.leftsideMenu,
@@ -76,6 +64,32 @@ $timing-func: cubic-bezier(0.45, 0, 0.55, 1);
     &.rightsideMenu {
       right: 0;
       transform: translateX($sidemenu-width);
+    }
+  }
+
+  &Dialog {
+    @include flex.flexbox;
+    @include flex.justify-content(center);
+  }
+
+  &Visible {
+    visibility: visible;
+    transition: visibility 0s 0s, background-color $bg-duration;
+    background-color: color.$overlay-color;
+
+    .dialogContent {
+      &.leftsideMenu {
+        transform: translateX(functions.pxToRem(-2px));
+      }
+
+      &.rightsideMenu {
+        transform: translateX(0);
+      }
+
+      &.default {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   }
 }

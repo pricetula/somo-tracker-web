@@ -1,4 +1,4 @@
-@mixin breakdevice($device, $value: 0) {
+@mixin device($device, $value: 0) {
   @if $device == mobile {
 		@media (min-width: 320px) { @content; }
 	}
