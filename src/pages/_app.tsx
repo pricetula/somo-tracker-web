@@ -2,7 +2,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Script from 'next/script';
-import Layout from 'src/components/Layout';
+import Layout from 'src/components/common/Layout';
 import 'src/style/global/index.scss';
 
 interface AppProps {
