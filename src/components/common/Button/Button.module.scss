@@ -6,7 +6,7 @@
 .button {
   @include flex.flexbox;
   @include flex.align-items(center);
-  background-color: none;
+  background-color: transparent;
   border: none;
   cursor: pointer;
   font-size: functions.pxToRem(16px);

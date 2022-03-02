@@ -12,8 +12,9 @@ const Home = () => {
       <Dialog
         isOpen={dialog.isOpen}
         onBackdropClick={() => dialog.setIsOpen(false)}
+        close={() => dialog.setIsOpen(false)}
       >
-        Content
+
       </Dialog>
     </div>
   );

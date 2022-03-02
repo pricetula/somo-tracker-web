@@ -10,9 +10,11 @@ $bg-duration: math.div($anime-duration, 2.1);
 $sidemenu-width: functions.pxToRem(300px);
 $timing-func: cubic-bezier(0.45, 0, 0.55, 1);
 
-.toggler {
+.closebutton {
   position: absolute;
-  right: 0;
+  top: functions.pxToRem(8px);
+  right: functions.pxToRem(8px);
+  opacity: 0.6;
 }
 
 .dialogWrapper {
