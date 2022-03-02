@@ -1,17 +1,17 @@
 import React from 'react';
-import { SideMenuOpenContext } from 'src/context/sideMenuOpen';
+import { DialogOpenContext } from 'src/context/dialogOpen';
 import Dialog, { Dialogvariant } from '../Dialog';
 import style from './Sidemenu.module.scss';
 
 const Sidemenu = () => {
-  const sideMenu = React.useContext(SideMenuOpenContext);
+  const dialog = React.useContext(DialogOpenContext);
   const closeSidemenu = () => {
-    sideMenu.setIsOpen(false);
+    dialog.setIsSideMenuOpen(false);
   }
   return (
     <Dialog
       variant={Dialogvariant.LEFTSIDEMENU}
-      isOpen={sideMenu.isOpen}
+      isOpen={dialog.isSideMenuOpen}
       onBackdropClick={closeSidemenu}
     >
       Content
