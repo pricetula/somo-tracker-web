@@ -1,4 +1,5 @@
 import React from 'react';
+import DynamicElement from '../DynamicElement';
 import style from './Dialog.module.scss';
 
 export enum Dialogvariant {
@@ -15,6 +16,7 @@ interface Dialogprops {
 }
 
 const Dialog = ({ children, variant, onBackdropClick, isOpen }: Dialogprops) => {
+  let htmlEl: keyof JSX.IntrinsicElements = 'aside'
   let contentClassName = `${style.dialogContent} `;
 
   switch (variant) {
@@ -27,19 +29,21 @@ const Dialog = ({ children, variant, onBackdropClick, isOpen }: Dialogprops) => 
       break;
 
     default:
+      htmlEl = 'dialog';
       contentClassName += style.default;
       break;
   }
 
   return (
-    <aside
+    <DynamicElement
+      el={htmlEl}
       onClick={onBackdropClick}
       className={`${style.dialogWrapper} ${isOpen ? style.dialogWrapperVisible : ''}`}
     >
       <section className={contentClassName} role="content">
         {children}
       </section>
-    </aside>
+    </DynamicElement>
   );
 }
 
