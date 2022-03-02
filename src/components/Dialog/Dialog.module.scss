@@ -14,7 +14,7 @@ $timing-func: cubic-bezier(0.45, 0, 0.55, 1);
   right: 0;
 }
 
-.sidemenuWrapper {
+.dialogWrapper {
   z-index: 3;
   top: functions.pxToRem(variable.$nav-bar-height);
   left: 0;
@@ -24,7 +24,7 @@ $timing-func: cubic-bezier(0.45, 0, 0.55, 1);
   visibility: hidden;
   transition: visibility 0s $anime-duration, background-color $bg-duration;
 
-  .sidemenu {
+  .dialog {
     background-color: white;
     width: $content-width;
     height: 100%;
@@ -39,7 +39,7 @@ $timing-func: cubic-bezier(0.45, 0, 0.55, 1);
     transition: visibility 0s 0s, background-color $bg-duration;
     background-color: color.$overlay-color;
 
-    .sidemenu {
+    .dialog {
       transform: translateX(functions.pxToRem(-2px));
     }
   }
