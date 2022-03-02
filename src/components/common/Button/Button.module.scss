@@ -4,7 +4,19 @@
 @use '/src/style/app/flex';
 
 .button {
+  @include flex.flexbox;
+  @include flex.align-items(center);
   background-color: none;
   border: none;
   cursor: pointer;
+  font-size: functions.pxToRem(16px);
+
+  > span ~ i,
+  > i ~ span {
+    margin-left: functions.pxToRem(8px);
+  }
+
+  > i {
+    font-size: functions.pxToRem(20px);
+  }
 }
