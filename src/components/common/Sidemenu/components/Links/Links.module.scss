@@ -9,5 +9,5 @@
   height: calc(100vh - (#{functions.pxToRem(variable.$nav-bar-height)} + #{functions.pxToRem(variable.$footer-height)}));
   padding: functions.pxToRem(20px);
   border-radius: functions.pxToRem(variable.$border-radius);
-  margin: functions.pxToRem(20px 20px 0px 20px);
+  margin: functions.pxToRem(0px 20px 0px 20px);
 }

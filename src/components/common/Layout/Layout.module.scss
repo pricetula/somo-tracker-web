@@ -6,6 +6,6 @@
 .main {
   @include flex.flexbox;
   min-height: calc(100vh - (#{functions.pxToRem(variable.$nav-bar-height)} + #{functions.pxToRem(variable.$footer-height)}));
-  padding: functions.pxToRem(0px 0px 40px);
+  padding: functions.pxToRem(28px 0px 40px);
   margin-top: functions.pxToRem(variable.$nav-bar-height);
 }
