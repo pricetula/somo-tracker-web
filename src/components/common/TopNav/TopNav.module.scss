@@ -1,6 +1,7 @@
 @use '/src/style/app/variable';
 @use '/src/style/app/functions';
 @use '/src/style/app/color';
+@use 'src/style/app/breakpoints';
 @use '/src/style/app/flex';
 
 .nav,
@@ -23,4 +24,11 @@
 
 .sidebarbutton {
   margin-right: functions.pxToRem(20px);
+}
+
+.sidebarbutton,
+.authMenubutton {
+  @include breakpoints.device(tablet) {
+    display: none;
+  };
 }

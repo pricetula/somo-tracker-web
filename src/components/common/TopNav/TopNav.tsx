@@ -17,7 +17,7 @@ function TopNav() {
         <Logo />
       </section>
       <section className={style.linksWrapper}>
-        <Button onClick={() => console.log("yoooooo")}>
+        <Button customClass={style.authMenubutton}>
           <i className="material-icons">more_vert</i>
         </Button>
       </section>
