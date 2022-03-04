@@ -5,5 +5,6 @@
 .footer {
   min-height: functions.pxToRem(variable.$footer-height);
   padding: functions.pxToRem(20px);
+  margin-top: functions.pxToRem(20px);
   background-color: color.$color-primary-100;
 }
