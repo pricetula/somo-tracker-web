@@ -7,7 +7,6 @@
 
 $anime-duration: 0.4s;
 $bg-duration: math.div($anime-duration, 2.1);
-$sidemenu-width: functions.pxToRem(300px);
 $timing-func: cubic-bezier(0.45, 0, 0.55, 1);
 
 .closebutton {
@@ -54,18 +53,18 @@ $timing-func: cubic-bezier(0.45, 0, 0.55, 1);
     &.rightsideMenu {
       position: absolute;
       top: 0;
-      width: $sidemenu-width;
+      width: functions.pxToRem(variable.$sidemenu-width);
       height: 100%;
     }
 
     &.leftsideMenu {
       left: 0;
-      transform: translateX(-$sidemenu-width);
+      transform: translateX(-(variable.$sidemenu-width));
     }
 
     &.rightsideMenu {
       right: 0;
-      transform: translateX($sidemenu-width);
+      transform: translateX(variable.$sidemenu-width);
     }
   }
 
