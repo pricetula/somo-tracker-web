@@ -22,10 +22,10 @@ $timing-func: cubic-bezier(0.45, 0, 0.55, 1);
   top: functions.pxToRem(variable.$nav-bar-height);
   left: 0;
   width: 100%;
-  height: calc(100vh - #{functions.pxToRem(variable.$nav-bar-height)});
+  height: 0;
   position: fixed;
   visibility: hidden;
-  transition: visibility 0s $anime-duration, background-color $bg-duration;
+  transition: height 0s $anime-duration, visibility 0s $anime-duration, background-color $bg-duration;
 
   .dialogContent {
     background-color: white;
@@ -75,6 +75,7 @@ $timing-func: cubic-bezier(0.45, 0, 0.55, 1);
   }
 
   &Visible {
+    height: calc(100vh - #{functions.pxToRem(variable.$nav-bar-height)});
     visibility: visible;
     transition: visibility 0s 0s, background-color $bg-duration;
     background-color: color.$overlay-color;
