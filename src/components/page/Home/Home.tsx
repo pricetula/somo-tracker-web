@@ -1,23 +1,13 @@
 import React from 'react';
-import Button from 'src/components/common/Button';
-import Dialog from 'src/components/common/Dialog';
-import { DialogOpenContext } from 'src/context/dialogOpen';
+import Pagewrapper from 'src/components/common/Pagewrapper';
 import style from './Home.module.scss';
 
-const Home = () => {
-  const dialog = React.useContext(DialogOpenContext);
-  return (
+const Home = () => (
+  <Pagewrapper>
     <div className={style.home}>
-      <Button onClick={() => dialog.setIsOpen(true)}>Open</Button>
-      <Dialog
-        isOpen={dialog.isOpen}
-        onBackdropClick={() => dialog.setIsOpen(false)}
-        close={() => dialog.setIsOpen(false)}
-      >
-
-      </Dialog>
+      Home
     </div>
-  );
-}
+  </Pagewrapper>
+);
 
 export default Home;

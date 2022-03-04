@@ -1,0 +1,9 @@
+@use '/src/style/app/variable';
+@use '/src/style/app/functions';
+@use '/src/style/app/color';
+@use '/src/style/app/flex';
+
+.pageWrapper {
+  @include flex.flexbox;
+  @include flex.flex-direction(column);
+}
