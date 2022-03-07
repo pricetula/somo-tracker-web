@@ -6,12 +6,12 @@ const list = [
   'Dil emma',
   'Por tiuncle',
   'Rai nmaker',
-  // 'Cou rante',
-  // 'Gon goozle',
-  // 'Rio meter',
-  // 'Bla sienWonky',
-  // 'Arr ogate',
-  // 'Cre nelAgita',
+  'Cou rante',
+  'Gon goozle',
+  'Rio meter',
+  'Bla sienWonky',
+  'Arr ogate',
+  'Cre nelAgita',
   // 'Qui nquadrate',
   // 'Den ouement',
   // 'Glu miferous',
@@ -40,8 +40,8 @@ const list = [
 ];
 
 const BreadcrumbNav = () => {
-  const [shownIndexes, setShownIndexes] = React.useState([]);
-  const [hidenIndexes, setHidenIndexes] = React.useState([]);
+  const [shown, setShown] = React.useState([]);
+  const [hidden, setHidden] = React.useState([]);
   const listEl = React.useRef(null);
   const navEl = React.useRef(null);
 
@@ -49,30 +49,58 @@ const BreadcrumbNav = () => {
     if (listEl && navEl) {
       let navWidth = navEl?.current?.clientWidth || 0;
       if (navWidth) {
-        const lItems = listEl?.current?.getElementsByTagName('li');
-        let iWidths = lItems[0]?.clientWidth || 0;
-        const shownIs = [0];
-        const hidenIs = [];
+        const listItems = listEl?.current?.getElementsByTagName('li');
+        const showIndexes = [0];
+        const hideIndexes = [];
 
-        for (let i = lItems?.length || 0; i > 1; i--) {
+        let totalItemWidths = listItems[0]?.clientWidth || 0;
+
+        if (totalItemWidths) {
+          totalItemWidths += 50
+        }
+
+        let addExpander = false;
+
+        for (let i = listItems?.length || 0; i > 1; i--) {
           const index = i-1;
-          iWidths += lItems[index]?.clientWidth;
-          console.log(iWidths, navWidth, iWidths < navWidth, list[index])
-          if (iWidths < navWidth) {
-            shownIs.push(index);
+
+          totalItemWidths += listItems[index]?.clientWidth;
+
+          if (totalItemWidths < navWidth) {
+            showIndexes.push(index);
           } else {
-            hidenIs.push(index);
+            if (!addExpander) {
+              addExpander = true;
+            }
+
+            hideIndexes.push(index);
           }
         }
 
-        setShownIndexes(shownIs);
-        setHidenIndexes(hidenIs);
+        let showCollection = [];
+        let hideCollection = [];
+
+        list.forEach((item, itemIndex) => {
+          if (showIndexes.includes(itemIndex)) {
+            showCollection.push(item);
+            if (itemIndex === 0 && addExpander) {
+              showCollection.push('[...]')
+            }
+          } else if (hideIndexes.includes(itemIndex)) {
+            hideCollection.push(item);
+          }
+        })
+
+        if (showCollection.length) {
+          setShown(showCollection);
+        }
+
+        if (hideCollection.length) {
+          setHidden(hideCollection);
+        }
       }
     }
-  }, [setShownIndexes, setHidenIndexes]);
-
-  const shownItems = list.filter((a, i) => shownIndexes.includes(i));
-  const hiddenItems = list.filter((a, i) => hidenIndexes.includes(i));
+  }, [setShown, setHidden]);
 
   return (
     <nav
@@ -81,12 +109,12 @@ const BreadcrumbNav = () => {
       className={style.nav}
     >
       <ul>
-        {shownItems.map((item) => (
+        {shown.map((item) => (
           <li key={item}>{item}</li>
         ))}
       </ul>
       <ul>
-        {hiddenItems.map((item) => (
+        {hidden.map((item) => (
           <li key={item}>{item}</li>
         ))}
       </ul>

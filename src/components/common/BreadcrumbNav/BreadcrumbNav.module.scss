@@ -4,16 +4,16 @@
 @use '/src/style/app/flex';
 
 .nav {
-  overflow-x: hidden;
+  overflow: hidden;
   width: functions.pxToRem(900px);
-  box-shadow: color.$shadow-dark-bottom;
-  // padding: functions.pxToRem(0px 10px 20px);
+  margin-top: functions.pxToRem(10px);
 
   ul {
     @include flex.flexbox;
 
     li {
       @include flex.flex(0,0);
+      font-size: functions.pxToRem(14px);;
 
       &:not(:last-of-type) {
         padding-right: functions.pxToRem(10px);
@@ -28,6 +28,7 @@
 
   .hiddenList {
     visibility: hidden;
+    height: 0;
   }
 }
 
