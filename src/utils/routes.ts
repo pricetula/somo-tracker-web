@@ -5,4 +5,4 @@ export interface AppRoute {
   parentKey: string
 }
 
-export const appRouteList
+export const appRouteList = [];
