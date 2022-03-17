@@ -4,7 +4,8 @@
 @use '/src/style/app/flex';
 
 .nav {
-  overflow: hidden;
+  position: relative;
+  max-width: 500px;
   margin-top: functions.pxToRem(10px);
 
   .baseList,
@@ -30,12 +31,18 @@
     }
   }
 
-  .hiddenList {}
+  .hiddenList {
+    visibility: hidden;
+  }
 
   .baseList {
-    // visibility: hidden;
-    // height: 0;
-    background-color: red;
+    visibility: hidden;
+    height: 0;
+    position: absolute;
   }
 }
 
+.expander {
+  line-height: 1;
+  margin-top: functions.pxToRem(-2px);
+}

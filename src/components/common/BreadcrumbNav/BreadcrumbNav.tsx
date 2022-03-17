@@ -21,6 +21,7 @@ const BreadcrumbNav = () => {
     const [list, setList] = React.useState<BreadCrumbs>([]);
     const [hidden, setHidden] = React.useState<BreadCrumbs>([]);
     const listEl = React.useRef(null);
+    const navEl = React.useRef(null);
 
     React.useEffect(() => {
         if (router?.isReady) {
@@ -38,70 +39,69 @@ const BreadcrumbNav = () => {
     }, [router?.isReady])
 
     React.useEffect(() => {
-        if (listEl && list.length) {
-            let navWidth = (listEl?.current?.clientWidth || 0);
-            if (navWidth) {
-                const listItems = listEl?.current?.getElementsByTagName('li');
-                const showIndexes = [0];
-                const hideIndexes = [];
+        if (navEl && listEl && list.length) {
+            const navWidth = (navEl?.current?.clientWidth || 0) - 50;
+            const listWidth = (listEl?.current?.clientWidth || 0);
 
-                let totalItemWidths = listItems[0]?.clientWidth || 0;
+            if (navWidth > listWidth) {
+                setShown(list);
+                return;
+            }
 
-                if (totalItemWidths) {
-                    totalItemWidths += 50
-                }
+            const listItems = listEl?.current?.getElementsByTagName('li');
 
-                let addExpander = false;
+            if (!listItems.length) return;
 
-                for (let i = listItems?.length || 0; i > 1; i--) {
-                    console.log('>>>>>', i)
-                    const index = i - 1;
+            let addExpander = false;
 
-                    totalItemWidths += listItems[index]?.clientWidth;
+            let showIndexes = [];
 
-                    if (totalItemWidths < navWidth) {
-                        showIndexes.push(index);
-                    } else {
-                        if (!addExpander) {
-                            addExpander = true;
-                        }
+            let hideIndexes = [];
 
-                        hideIndexes.push(index);
+            let totalItemWidths = listItems[0]?.clientWidth || 0;
+
+            for (let i = listItems?.length - 1 || 0; i > 0; i--) {
+                totalItemWidths += listItems[i]?.clientWidth;
+
+                if (totalItemWidths < navWidth) {
+                    showIndexes.push(list[i]);
+                } else {
+                    if (!addExpander) {
+                        addExpander = true;
                     }
+
+                    hideIndexes.push(list[i]);
                 }
+            }
 
-                let showCollection = [];
-                let hideCollection = [];
+            let sl: ShownBreadCrumb[] = [list[0]]
 
-                list.forEach((item, itemIndex) => {
-                    if (showIndexes.includes(itemIndex)) {
-                        showCollection.push(item);
-                        if (itemIndex === 0 && addExpander) {
-                            showCollection.push({
-                                href: '',
-                                label: '',
-                                expander: true
-                            })
-                        }
-                    } else if (hideIndexes.includes(itemIndex)) {
-                        hideCollection.push(item);
+            if (addExpander) {
+                sl = [
+                    ...sl,
+                    {
+                        href: '',
+                        label: '',
+                        expander: true,
                     }
-                })
+                ]
+            }
 
-                if (showCollection.length) {
-                    setShown(showCollection);
-                }
+            sl = [...sl, ...showIndexes.reverse()]
 
-                if (hideCollection.length) {
-                    setHidden(hideCollection);
-                }
+            if (sl.length) {
+                setShown(sl);
+            }
+            
+            if (hideIndexes.length) {
+                setHidden(hideIndexes);
             }
         }
     }, [list, setShown, setHidden]);
-    console.log('List', shown, hidden)
 
     return (
         <nav
+            ref={navEl}
             aria-label="bread crumb"
             className={style.nav}
         >
@@ -110,7 +110,7 @@ const BreadcrumbNav = () => {
                     <li key={item.href}>
                         {
                             item?.expander
-                                ?  <Button leftIconName="expand_more" />
+                                ?  <Button leftIconName="expand_more" customClass={style.expander} />
                                 : (
                                     <Link href={item.href}>
                                         <a>
