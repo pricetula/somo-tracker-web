@@ -1,4 +1,4 @@
-import {appRouteMap} from './routes';
+import {appRouteMap} from 'src/utils/routes';
 import getBreadCrumbList from './getBreadCrumbList'
 
 describe('getUrlWithInjectedValues', () => {

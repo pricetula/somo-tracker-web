@@ -1,5 +1,5 @@
-import getUrlWithInjectedValues, { ValuesToInjectInUrl } from './getUrlWithInjectedValues'
-import { AppRouteMap } from './routes'
+import getUrlWithInjectedValues, { ValuesToInjectInUrl } from 'src/utils/getUrlWithInjectedValues'
+import { AppRouteMap } from 'src/utils/routes'
 
 export interface BreadCrumb {
     label: string,
@@ -21,8 +21,7 @@ export default ({
 }: GetBreadCrumbListInput): BreadCrumbs => {
     if (
         !startingUrlPattern ||
-        !appRouteMap[startingUrlPattern] ||
-        !appRouteMap[startingUrlPattern].parentHref
+        !appRouteMap[startingUrlPattern]?.parentHref
     ) return null
 
     const l = []
