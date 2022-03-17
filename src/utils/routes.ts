@@ -1,8 +1,15 @@
 export interface AppRoute {
-  key: string
   label: string
   href: string
-  parentKey: string
-}
+  parentHref: string
+};
 
-export const appRouteList = [];
+export type AppRoutes = AppRoute[];
+
+export const appRouteList: AppRoutes = [
+  {
+    label: 'home',
+    href: '/',
+    parentHref: null
+  }
+];
