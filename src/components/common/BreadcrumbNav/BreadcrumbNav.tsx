@@ -1,56 +1,37 @@
 import React from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { appRouteMap } from 'src/utils/routes';
+import { ValuesToInjectInUrl } from 'src/utils/getUrlWithInjectedValues';
+import getBreadCrumbList, { BreadCrumbs } from './utils/getBreadCrumbList'
 import style from './BreadcrumbNav.module.scss';
-
-const list = [
-  'Home',
-  'Dil emma',
-  'Por tiuncle',
-  'Rai nmaker',
-  'Cou rante',
-  'Gon goozle',
-  'Rio meter',
-  'Bla sienWonky',
-  'Arr ogate',
-  'Cre nelAgita',
-  // 'Qui nquadrate',
-  // 'Den ouement',
-  // 'Glu miferous',
-  // 'Zoc treeEgads',
-  // 'Sta lactiform',
-  // 'Rin dfleis',
-  // 'Pin khotBlewit',
-  // 'Fil ibuster',
-  // 'Cli thridiate',
-  // 'Bet hezSmegma',
-  // 'Hyd ropathy',
-  // 'Sco fflaw',
-  // 'Ism atic',
-  // 'Kid dowJest',
-  // 'Nut arian',
-  // 'Non plussed',
-  // 'Hic klanPaseo',
-  // 'Jod ikKazoo',
-  // 'Gho kaaMercer',
-  // 'Bra nnigan',
-  // 'Sed igitated',
-  // 'Arc hietGerund',
-  // 'Tri stypooStang',
-  // 'Fla bbergast',
-  // 'Diz zyduckVolta',
-];
 
 const BreadcrumbNav = () => {
   const router = useRouter()
 
-  const [shown, setShown] = React.useState([]);
-  const [hidden, setHidden] = React.useState([]);
+  const [shown, setShown] = React.useState<BreadCrumbs>([]);
+  const [list, setList] = React.useState<BreadCrumbs>([]);
+  const [hidden, setHidden] = React.useState<BreadCrumbs>([]);
   const listEl = React.useRef(null);
   const navEl = React.useRef(null);
 
   React.useEffect(() => {
-    if (listEl && navEl) {
-      console.log("Router", router)
+    if (router?.isReady) {
+      setList(
+        (
+          getBreadCrumbList({
+            appRouteMap,
+            startingUrlPattern: router?.pathname,
+            values: router?.query as ValuesToInjectInUrl
+          }) ||
+          []
+        ).reverse()
+      )
+    }
+  }, [router?.isReady])
+
+  React.useEffect(() => {
+    if (listEl && navEl && list.length) {
       let navWidth = navEl?.current?.clientWidth || 0;
       if (navWidth) {
         const listItems = listEl?.current?.getElementsByTagName('li');
@@ -66,7 +47,7 @@ const BreadcrumbNav = () => {
         let addExpander = false;
 
         for (let i = listItems?.length || 0; i > 1; i--) {
-          const index = i-1;
+          const index = i - 1;
 
           totalItemWidths += listItems[index]?.clientWidth;
 
@@ -104,7 +85,7 @@ const BreadcrumbNav = () => {
         }
       }
     }
-  }, [setShown, setHidden]);
+  }, [list, setShown, setHidden]);
 
   return (
     <nav
@@ -114,18 +95,31 @@ const BreadcrumbNav = () => {
     >
       <ul>
         {shown.map((item) => (
-          <li key={item}>{item}</li>
+          <li key={item.href}>
+            <Link href={item.href}>
+              <a>
+                {item.label}
+              </a>
+            </Link>
+          </li>
         ))}
       </ul>
+
       <ul>
         {hidden.map((item) => (
-          <li key={item}>{item}</li>
+          <li key={item.href}>
+            <Link href={item.href}>
+              <a>
+                {item.label}
+              </a>
+            </Link>
+          </li>
         ))}
       </ul>
 
       <ul ref={listEl} className={style.hiddenList}>
         {list.map((item) => (
-          <li key={item}>{item}</li>
+          <li key={item.href}>{item.href}</li>
         ))}
       </ul>
     </nav>
