@@ -1,13 +1,15 @@
-export interface DynamicRouteGeneratorInput {
+export type ValuesToInjectInUrl = {[key: string]: string | number}
+
+export interface GetUrlWithInjectedValuesInput {
     urlPattern: string
-    values?: {[key: string]: string | number}
+    values?: ValuesToInjectInUrl
 }
 
 export default (
     {
         urlPattern,
         values,
-    }: DynamicRouteGeneratorInput
+    }: GetUrlWithInjectedValuesInput
 ) => {
     if (!urlPattern) return null;
 
