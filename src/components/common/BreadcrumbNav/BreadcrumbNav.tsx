@@ -8,6 +8,7 @@ import getBreadCrumbList, {
     BreadCrumb,
     BreadCrumbs,
 } from './utils/getBreadCrumbList'
+import getShownAndHiddenBreadcrumbs from './utils/getShownAndHiddenBreadcrumbs'
 import style from './BreadcrumbNav.module.scss';
 
 export interface ShownBreadCrumb extends BreadCrumb {
@@ -41,62 +42,14 @@ const BreadcrumbNav = () => {
 
     React.useEffect(() => {
         if (navEl && listEl && list.length) {
-            const navWidth = (navEl?.current?.clientWidth || 0) - 50;
-            const listWidth = (listEl?.current?.clientWidth || 0);
-
-            if (navWidth > listWidth) {
-                setShown(list);
-                return;
-            }
-
-            const listItems = listEl?.current?.getElementsByTagName('li');
-
-            if (!listItems.length) return;
-
-            let addExpander = false;
-
-            let showIndexes = [];
-
-            let hideIndexes = [];
-
-            let totalItemWidths = listItems[0]?.clientWidth || 0;
-
-            for (let i = listItems?.length - 1 || 0; i > 0; i--) {
-                totalItemWidths += listItems[i]?.clientWidth;
-
-                if (totalItemWidths < navWidth) {
-                    showIndexes.push(list[i]);
-                } else {
-                    if (!addExpander) {
-                        addExpander = true;
-                    }
-
-                    hideIndexes.push(list[i]);
-                }
-            }
-
-            let sl: ShownBreadCrumb[] = [list[0]]
-
-            if (addExpander) {
-                sl = [
-                    ...sl,
-                    {
-                        href: '',
-                        label: '',
-                        expander: true,
-                    }
-                ]
-            }
-
-            sl = [...sl, ...showIndexes.reverse()]
-
-            if (sl.length) {
-                setShown(sl);
-            }
-            
-            if (hideIndexes.length) {
-                setHidden(hideIndexes);
-            }
+            getShownAndHiddenBreadcrumbs({
+                setShown,
+                setHidden,
+                breadCrumbList: list,
+                actualListItems: listEl?.current?.getElementsByTagName('li'),
+                wrapperWidth: (navEl?.current?.clientWidth || 0) - 50,
+                actualListWidth: (listEl?.current?.clientWidth || 0),
+            })
         }
     }, [list, setShown, setHidden]);
 
