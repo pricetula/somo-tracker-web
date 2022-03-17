@@ -1,7 +1,7 @@
 import {appRouteMap} from 'src/utils/routes';
 import getBreadCrumbList from './getBreadCrumbList'
 
-describe('getUrlWithInjectedValues', () => {
+describe('getBreadCrumbList', () => {
     test('url with empty string to return null', () => {
         expect(
             getBreadCrumbList({
