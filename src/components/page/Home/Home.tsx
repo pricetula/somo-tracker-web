@@ -5,7 +5,7 @@ import style from './Home.module.scss';
 const Home = () => (
   <Pagewrapper>
     <div className={style.home}>
-      Home
+      Home2
     </div>
   </Pagewrapper>
 );
