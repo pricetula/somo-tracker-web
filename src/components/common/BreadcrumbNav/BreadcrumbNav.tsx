@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import style from './BreadcrumbNav.module.scss';
 
 const list = [
@@ -40,6 +41,8 @@ const list = [
 ];
 
 const BreadcrumbNav = () => {
+  const router = useRouter()
+
   const [shown, setShown] = React.useState([]);
   const [hidden, setHidden] = React.useState([]);
   const listEl = React.useRef(null);
@@ -47,6 +50,7 @@ const BreadcrumbNav = () => {
 
   React.useEffect(() => {
     if (listEl && navEl) {
+      console.log("Router", router)
       let navWidth = navEl?.current?.clientWidth || 0;
       if (navWidth) {
         const listItems = listEl?.current?.getElementsByTagName('li');
