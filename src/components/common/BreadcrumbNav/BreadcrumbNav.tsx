@@ -24,6 +24,7 @@ const BreadcrumbNav = () => {
     const navEl = React.useRef(null);
 
     React.useEffect(() => {
+        /* eslint-disable react-hooks/exhaustive-deps */
         if (router?.isReady) {
             setList(
                 (

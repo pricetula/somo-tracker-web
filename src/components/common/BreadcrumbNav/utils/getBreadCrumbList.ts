@@ -14,7 +14,7 @@ export interface GetBreadCrumbListInput {
     values?: ValuesToInjectInUrl,
 }
 
-export default ({
+const f = ({
     values,
     appRouteMap,
     startingUrlPattern,
@@ -44,3 +44,5 @@ export default ({
 
     return l
 }
+
+export default f;
