@@ -5,12 +5,16 @@
 
 .nav {
   overflow: hidden;
-  width: functions.pxToRem(900px);
   margin-top: functions.pxToRem(10px);
 
-  ul {
+  .baseList,
+  .shownList,
+  .shownList li {
     @include flex.flexbox;
+  }
 
+  .baseList,
+  .shownList {
     li {
       @include flex.flex(0,0);
       font-size: functions.pxToRem(14px);;
@@ -26,9 +30,12 @@
     }
   }
 
-  .hiddenList {
-    visibility: hidden;
-    height: 0;
+  .hiddenList {}
+
+  .baseList {
+    // visibility: hidden;
+    // height: 0;
+    background-color: red;
   }
 }
 
