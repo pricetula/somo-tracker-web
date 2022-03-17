@@ -9,3 +9,7 @@
   padding: functions.pxToRem(28px 0px 0px);
   margin-top: functions.pxToRem(variable.$nav-bar-height);
 }
+
+.content {
+  flex-grow: 1;
+}
