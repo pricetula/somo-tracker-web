@@ -43,6 +43,11 @@ body {
 }
 
 @include app.darkmode {
+  * {
+    color: app.$color-dark-100;
+    outline-color: app.$color-dark-200;
+  }
+
   body {
     background: app.$color-dark-500;
   }

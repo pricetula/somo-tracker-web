@@ -1,12 +1,5 @@
 @use '/src/style/app/color';
-@use '/src/style/app/darkmode';
 
 .link{
     text-decoration: none;
-}
-
-@include darkmode.darkmode {
-    .link {
-      color: color.$color-primary-100;
-    }
 }

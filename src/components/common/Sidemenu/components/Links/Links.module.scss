@@ -1,7 +1,7 @@
 @use '/src/style/app/variable';
 @use '/src/style/app/functions';
 @use '/src/style/app/color';
-@use '/src/style/app/flex';
+@use '/src/style/app/darkmode';
 
 .links {
   background-color: color.$color-primary-100;
@@ -10,4 +10,10 @@
   padding: functions.pxToRem(20px);
   border-radius: functions.pxToRem(variable.$border-radius);
   margin: functions.pxToRem(0px 20px 0px 20px);
+}
+
+@include darkmode.darkmode {
+  .links {
+    background-color: color.$color-dark-400;
+  }
 }
