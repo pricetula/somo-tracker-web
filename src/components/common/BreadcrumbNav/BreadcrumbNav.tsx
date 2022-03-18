@@ -1,8 +1,8 @@
 import React from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { appRouteMap } from 'src/utils/routes';
 import { ValuesToInjectInUrl } from 'src/utils/getUrlWithInjectedValues';
+import Link from 'src/components/common/Link';
 import Button from 'src/components/common/Button';
 import getBreadCrumbList, {
     BreadCrumb,
@@ -67,9 +67,7 @@ const BreadcrumbNav = () => {
                                 ?  <Button leftIconName="expand_more" customClass={style.expander} />
                                 : (
                                     <Link href={item.href}>
-                                        <a>
-                                            {item.label}
-                                        </a>
+                                        {item.label}
                                     </Link>
                                 )
                         }
