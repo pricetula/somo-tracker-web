@@ -10,7 +10,6 @@
 }
 
 html {
-  background-color: white;
   font-size: app.pxToRem(app.$base-font-size);
 }
 
@@ -44,5 +43,11 @@ body {
     &:hover {
       background-color: app.$color-dark-200;
     }
+  }
+}
+
+@include app.darkmode {
+  body {
+    background: app.$color-dark-500;
   }
 }
