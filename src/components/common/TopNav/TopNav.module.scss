@@ -1,15 +1,11 @@
-@use '/src/style/app/variable';
-@use '/src/style/app/functions';
-@use '/src/style/app/color';
-@use 'src/style/app/breakpoints';
-@use '/src/style/app/flex';
+@use '/src/style/app';
 
 .nav,
 .linksWrapper,
 .logoSidebarbuttonWrapper {
-  @include flex.flexbox;
-  @include flex.align-items(center);
-  @include flex.justify-content(space-between);
+  @include app.flexbox;
+  @include app.align-items(center);
+  @include app.justify-content(space-between);
 }
 
 .nav {
@@ -17,18 +13,24 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: color.$color-primary-100;
-  height: functions.pxToRem(variable.$nav-bar-height);
-  padding: functions.pxToRem(0px 20px);
+  background-color: app.$color-primary-100;
+  height: app.pxToRem(app.$nav-bar-height);
+  padding: app.pxToRem(0px 20px);
 }
 
 .sidebarbutton {
-  margin-right: functions.pxToRem(20px);
+  margin-right: app.pxToRem(20px);
 }
 
 .sidebarbutton,
 .authMenubutton {
-  @include breakpoints.device(tablet) {
+  @include app.device(tablet) {
     display: none;
   };
+}
+
+@include app.darkmode {
+  .nav {
+    background-color: app.$color-dark-400;
+  }
 }

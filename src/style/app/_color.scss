@@ -31,7 +31,7 @@ $color-warning-200: #EFE7D3;
 $color-warning-100: #F0EBDF;
 
 $color-dark-500: #212024;
-$color-dark-400: #361075;
+$color-dark-400: #3b3a3f;
 $color-dark-300: #565C96;
 $color-dark-200: #D3D3D3;
 $color-dark-100: #E7EAF3;
@@ -42,3 +42,4 @@ $shadow-light-right: functions.pxToRem(1px 0px 4px 0px) rgba(49, 38, 68, 0.25);
 $shadow-dark-bottom: functions.pxToRem(0px 4px 2px 0px) rgba(206, 200, 216, 0.5);
 
 $overlay-color: rgba($color-primary-400, 0.45);
+$overlay-color-dark-mode: rgba($color-dark-400, 0.5);
