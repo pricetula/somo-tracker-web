@@ -1,10 +1,17 @@
 @use '/src/style/app/variable';
 @use '/src/style/app/functions';
 @use '/src/style/app/color';
+@use '/src/style/app/darkmode';
 
 .footer {
   min-height: functions.pxToRem(variable.$footer-height);
   padding: functions.pxToRem(20px);
   margin-top: functions.pxToRem(20px);
   background-color: color.$color-primary-100;
+}
+
+@include darkmode.darkmode {
+  .footer {
+    background-color: color.$color-dark-400;
+  }
 }

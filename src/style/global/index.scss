@@ -10,16 +10,11 @@
 }
 
 html {
-  background-color: white;
   font-size: app.pxToRem(app.$base-font-size);
 }
 
 ul {
   list-style: none;
-}
-
-a{
-  text-decoration: none;
 }
 
 .material-icons {
@@ -44,5 +39,16 @@ body {
     &:hover {
       background-color: app.$color-dark-200;
     }
+  }
+}
+
+@include app.darkmode {
+  * {
+    color: app.$color-dark-100;
+    outline-color: app.$color-dark-200;
+  }
+
+  body {
+    background: app.$color-dark-500;
   }
 }

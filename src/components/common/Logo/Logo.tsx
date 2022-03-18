@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'src/components/common/Link';
 import style from './Logo.module.scss';
 
 export interface LogoProps {
@@ -14,10 +15,10 @@ function Logo({ hideIcon, hideText }: LogoProps) {
   }
 
   return (
-    <a href="#" className={style.logo}>
+    <Link href="#" customClass={style.logo}>
       {!hideIcon && <div className={style.icon} aria-label="Icon" />}
       {!hideText && (<strong className={textClassName}>SomoTracker</strong>)}
-    </a>
+    </Link>
   );
 }
 

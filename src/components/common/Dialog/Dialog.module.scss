@@ -1,9 +1,5 @@
 @use 'sass:math';
-@use '/src/style/app/variable';
-@use '/src/style/app/functions';
-@use '/src/style/app/color';
-@use '/src/style/app/flex';
-@use '/src/style/app/breakpoints';
+@use '/src/style/app';
 
 $anime-duration: 0.4s;
 $bg-duration: math.div($anime-duration, 2.1);
@@ -11,14 +7,14 @@ $timing-func: cubic-bezier(0.45, 0, 0.55, 1);
 
 .closebutton {
   position: absolute;
-  top: functions.pxToRem(8px);
-  right: functions.pxToRem(8px);
+  top: app.pxToRem(8px);
+  right: app.pxToRem(8px);
   opacity: 0.6;
 }
 
 .dialogWrapper {
   z-index: 3;
-  top: functions.pxToRem(variable.$nav-bar-height);
+  top: app.pxToRem(app.$nav-bar-height);
   left: 0;
   width: 100%;
   height: 0;
@@ -37,15 +33,15 @@ $timing-func: cubic-bezier(0.45, 0, 0.55, 1);
       border: none;
       max-width: 98%;
       opacity: 0;
-      transform: translateY(functions.pxToRem(40px));
-      min-width: functions.pxToRem(368px);
-      min-height: functions.pxToRem(300px);
-      max-height: functions.pxToRem(600px);
-      border-radius: functions.pxToRem(8px);
-      margin-top: functions.pxToRem(40px);
+      transform: translateY(app.pxToRem(40px));
+      min-width: app.pxToRem(368px);
+      min-height: app.pxToRem(300px);
+      max-height: app.pxToRem(600px);
+      border-radius: app.pxToRem(8px);
+      margin-top: app.pxToRem(40px);
 
-      @include breakpoints.device(tablet) {
-        margin-top: functions.pxToRem(100px);
+      @include app.device(tablet) {
+        margin-top: app.pxToRem(100px);
       }
     }
 
@@ -53,35 +49,35 @@ $timing-func: cubic-bezier(0.45, 0, 0.55, 1);
     &.rightsideMenu {
       position: absolute;
       top: 0;
-      width: functions.pxToRem(variable.$sidemenu-width);
+      width: app.pxToRem(app.$sidemenu-width);
       height: 100%;
     }
 
     &.leftsideMenu {
       left: 0;
-      transform: translateX(-(variable.$sidemenu-width));
+      transform: translateX(-(app.$sidemenu-width));
     }
 
     &.rightsideMenu {
       right: 0;
-      transform: translateX(variable.$sidemenu-width);
+      transform: translateX(app.$sidemenu-width);
     }
   }
 
   &Dialog {
-    @include flex.flexbox;
-    @include flex.justify-content(center);
+    @include app.flexbox;
+    @include app.justify-content(center);
   }
 
   &Visible {
-    height: calc(100vh - #{functions.pxToRem(variable.$nav-bar-height)});
+    height: calc(100vh - #{app.pxToRem(app.$nav-bar-height)});
     visibility: visible;
     transition: visibility 0s 0s, background-color $bg-duration;
-    background-color: color.$overlay-color;
+    background-color: app.$overlay-color;
 
     .dialogContent {
       &.leftsideMenu {
-        transform: translateX(functions.pxToRem(-2px));
+        transform: translateX(app.pxToRem(-2px));
       }
 
       &.rightsideMenu {
@@ -94,4 +90,16 @@ $timing-func: cubic-bezier(0.45, 0, 0.55, 1);
       }
     }
   }
+}
+
+@include app.darkmode {
+    .dialogWrapper {
+        .dialogContent {
+            background-color: app.$color-dark-500;
+        }
+
+        &Visible {
+            background-color: app.$overlay-color-dark-mode;
+        }
+    }
 }
