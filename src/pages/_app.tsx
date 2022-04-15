@@ -3,6 +3,7 @@ import React from 'react';
 import Head from 'next/head';
 import Script from 'next/script';
 import Layout from 'src/components/common/Layout';
+import { UserProvider } from '@auth0/nextjs-auth0';
 import 'src/style/global/index.scss';
 
 interface AppProps {
@@ -17,7 +18,7 @@ class App extends React.Component<AppProps> {
       pageProps,
     } = this.props;
     return (
-      <>
+      <UserProvider>
         <Head>
           <link
             rel="shortcut icon"
@@ -57,7 +58,7 @@ class App extends React.Component<AppProps> {
         <Layout>
           <Component {...pageProps} />
         </Layout>
-      </>
+      </UserProvider>
     );
   }
 }
