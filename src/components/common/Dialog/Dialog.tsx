@@ -61,7 +61,6 @@ const Dialog = (
 
     // return function to be handled by key down event listener only once ref has changed
     const handleKeyDown = React.useCallback((event: KeyboardEvent): void => {
-        event?.preventDefault?.()
         if (event.code === "Escape") {
             handleClose()
         }

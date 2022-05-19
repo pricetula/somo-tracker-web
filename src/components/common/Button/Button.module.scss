@@ -1,18 +1,15 @@
-@use '/src/style/app/variable';
-@use '/src/style/app/functions';
-@use '/src/style/app/color';
-@use '/src/style/app/flex';
+@use '/src/style/app';
 
 .button {
-  @include flex.flexbox;
-  @include flex.align-items(center);
+  @include app.flexbox;
+  @include app.align-items(center);
   background-color: transparent;
   border: none;
   cursor: pointer;
-  font-size: functions.pxToRem(16px);
+  font-size: app.pxToRem(16px);
 
   > span ~ i,
   > i ~ span {
-    margin-left: functions.pxToRem(8px);
+    margin-left: app.pxToRem(8px);
   }
 }
