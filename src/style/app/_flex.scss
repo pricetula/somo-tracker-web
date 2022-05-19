@@ -216,3 +216,9 @@
   }
   align-self: $value;
 }
+
+// center align items and center justify contents
+@mixin flex-center {
+  @include align-items(center);
+  @include justify-content(center);
+}

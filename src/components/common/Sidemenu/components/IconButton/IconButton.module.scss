@@ -1,0 +1,7 @@
+@use '/src/style/app';
+
+.wrapper {
+    @include app.flexbox;
+    @include app.flex-center;
+    width: app.pxToRem(40px);
+}

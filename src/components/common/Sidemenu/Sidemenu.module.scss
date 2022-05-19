@@ -6,6 +6,10 @@
   height: app.pxToRem(app.$app-content-min-height);
 }
 
+.search {
+  padding: app.pxToRem(16px 8px);
+}
+
 @include app.darkmode {
   .wrapper {
     background-color: app.$color-dark-400;
