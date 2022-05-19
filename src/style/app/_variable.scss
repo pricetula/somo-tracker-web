@@ -1,3 +1,5 @@
+// @use './functions';
+
 $base-font-size: 16px;
 
 $nav-bar-height: 72px;
@@ -9,3 +11,5 @@ $sidemenu-width: 300px;
 $border-radius: 16px;
 
 $container-width: 1920px;
+
+$app-content-min-height: calc(100vh - (#{$nav-bar-height} + #{$footer-height}));

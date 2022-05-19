@@ -1,0 +1,12 @@
+@use '/src/style/app';
+
+.wrapper {
+  background-color: app.$color-primary-100;
+  height: app.pxToRem(app.$app-content-min-height);
+}
+
+@include app.darkmode {
+  .wrapper {
+    background-color: app.$color-dark-400;
+  }
+}

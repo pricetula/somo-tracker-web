@@ -3,7 +3,9 @@ import style from './Sidemenu.module.scss';
 
 const Sidemenu = () => {
   return (
-    <div>sss</div>
+    <nav className={style.wrapper}>
+      ss
+    </nav>
   );
 };
 
