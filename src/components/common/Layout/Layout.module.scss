@@ -2,6 +2,7 @@
 
 .main {
   @include app.flexbox;
+  position: relative;
   min-height: app.pxToRem(app.$app-content-min-height);
   margin-top: app.pxToRem(app.$nav-bar-height);
 }

@@ -1,6 +1,7 @@
 @use '/src/style/app';
 
 .wrapper {
+  position: fixed;
   background-color: app.$color-primary-100;
   height: app.pxToRem(app.$app-content-min-height);
 }
