@@ -3,7 +3,7 @@
 .wrapper {
     @include app.flexbox;
     @include app.flex-center;
-    @include app.box(30px);
+    @include app.box(32px);
     border-radius: 50%;
 
     &:hover {

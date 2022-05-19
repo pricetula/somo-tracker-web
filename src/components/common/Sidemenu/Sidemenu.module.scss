@@ -1,17 +1,22 @@
 @use '/src/style/app';
+@use './common';
 
 .wrapper {
-  position: fixed;
-  background-color: app.$color-primary-100;
-  height: app.pxToRem(app.$app-content-min-height);
+    position: fixed;
+    background-color: app.$color-primary-100;
+    height: app.pxToRem(app.$app-content-min-height);
+    padding: app.pxToRem(16px 8px);
 }
 
 .search {
-  padding: app.pxToRem(16px 8px);
+    height: common.$top-section-height;
+    padding-bottom: app.pxToRem(16px);
+    margin-bottom: app.pxToRem(8px);
+    border-bottom: app.pxToRem(1px) solid rgba(app.$color-dark-300, 0.4);
 }
 
 @include app.darkmode {
-  .wrapper {
-    background-color: app.$color-dark-400;
-  }
+    .wrapper {
+        background-color: app.$color-dark-400;
+    }
 }

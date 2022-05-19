@@ -16,7 +16,7 @@ const Sidemenu = () => {
             </section>
             <section className={style.navigation}>
                 <IconList />
-                <NavList />
+                <NavList expanded={expanded}/>
             </section>
         </aside>
     );
