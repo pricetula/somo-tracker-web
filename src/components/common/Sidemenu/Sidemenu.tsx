@@ -1,11 +1,19 @@
-import React from 'react';
-import style from './Sidemenu.module.scss';
+import React from 'react'
+import IconList from './components/IconList'
+import NavList from './components/NavList'
+import style from './Sidemenu.module.scss'
 
 const Sidemenu = () => {
   return (
-    <nav className={style.wrapper}>
-      ss
-    </nav>
+    <aside className={style.wrapper}>
+      <section className={style.search}>
+        
+      </section>
+      <section className={style.navigation}>
+        <IconList />
+        <NavList />
+      </section>
+    </aside>
   );
 };
 
