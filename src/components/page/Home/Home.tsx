@@ -1,6 +1,7 @@
 import React from 'react';
 import Pagewrapper from 'src/components/common/Pagewrapper';
 import Dialog from 'src/components/common/Dialog'
+import Button from 'src/components/common/Button';
 import style from './Home.module.scss';
 
 const Home = () => {
@@ -16,9 +17,9 @@ const Home = () => {
         >
           Example dialog
         </Dialog>
-        <button onClick={() => setOpen(true)}>
+        <Button onClick={() => setOpen(true)}>
           Open/close
-        </button>
+        </Button>
       </div>
     </Pagewrapper>
   );

@@ -6,7 +6,6 @@
   line-height: 1;
   font-family: 'Roboto', sans-serif;
   color: app.$color-dark-500;
-  outline-color: app.$color-dark-200;
 }
 
 html {
@@ -34,7 +33,6 @@ body {
   &::-webkit-scrollbar-thumb:horizontal {
     background-color: rgba(app.$color-dark-200, 0.9);
     border-radius: app.pxToRem(10px);
-    // outline: 1px solid rgb(13, 102, 190);
 
     &:hover {
       background-color: app.$color-dark-200;
@@ -45,7 +43,6 @@ body {
 @include app.darkmode {
   * {
     color: app.$color-dark-100;
-    outline-color: app.$color-dark-200;
   }
 
   body {
