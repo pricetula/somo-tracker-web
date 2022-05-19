@@ -37,7 +37,7 @@ $dialog-min-content-height: calc(#{$dialog-min-height} - (#{$dialog-section-padd
 .wrapper {
     border: none;
     background-color: app.$color-primary-100;
-    margin: app.pxToRem(calc(100px + #{app.$nav-bar-height})) auto 0;
+    margin: app.pxToRem(calc(60px + #{app.$nav-bar-height})) auto 0;
     width: 90%;
     max-width: app.pxToRem(700px);
     min-height: $dialog-min-height;
