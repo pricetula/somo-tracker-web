@@ -1,16 +1,10 @@
 @use './functions';
 
-$color-primary: #2F0578;
-$color-primary-dark-1: #054e80;
-$color-primary-dark-2: #061f30;
-
-$color-primary-light-4: #f5f7ff;
-
-$color-primary-500: #2F0578;
-$color-primary-400: #6917F1;
-$color-primary-300: #946DD4;
-$color-primary-200: #CCC4DB;
-$color-primary-100: #F3F3F4;
+$color-primary-500: #003b76;
+$color-primary-400: #0080ff;
+$color-primary-300: #64b2ff;
+$color-primary-200: #bedeff;
+$color-primary-100: #f1f4f6;
 
 $color-secondary-500: #058C85;
 $color-secondary-400: #0CCFC5;
@@ -30,11 +24,11 @@ $color-warning-300: #E7CC8D;
 $color-warning-200: #EFE7D3;
 $color-warning-100: #F0EBDF;
 
-$color-dark-500: #212024;
-$color-dark-400: #3b3a3f;
-$color-dark-300: #565C96;
-$color-dark-200: #D3D3D3;
-$color-dark-100: #E7EAF3;
+$color-dark-500: #001326;
+$color-dark-400: #1e2e3e;
+$color-dark-300: #3c4d5e;
+$color-dark-200: #95a8b9;
+$color-dark-100: #ced9e3;
 
 $shadow-light: functions.pxToRem(0px) functions.pxToRem(2px) functions.pxToRem(4px) functions.pxToRem(2px) rgba(206, 200, 216, 0.25);
 $shadow-dark: functions.pxToRem(0px) functions.pxToRem(4px) functions.pxToRem(4px) functions.pxToRem(1px) rgba(49, 38, 68, 0.25);
