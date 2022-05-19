@@ -1,6 +1,6 @@
 import React from 'react';
 import { DialogOpenContext } from 'src/context/dialogOpen';
-import Dialog, { Dialogvariant } from '../Dialog';
+import Dialog, { Dialogvariant } from '../Dialog2';
 import style from './Sidemenu.module.scss';
 
 const Sidemenu = () => {

@@ -1,87 +1,116 @@
-import React from 'react';
-import Button from '../Button';
-import DynamicElement from '../DynamicElement';
-import style from './Dialog.module.scss';
+import React from 'react'
+import preventClickPropagation from 'src/utils/preventClickPropagation'
+import Button from 'src/components/common/Button'
+import style from './Dialog.module.scss'
 
-export enum Dialogvariant {
-  LEFTSIDEMENU = 'leftsideMenu',
-  RIGHTSIDEMENU = 'rightsideMenu',
-  DEFAULT = 'default',
+/*
+    Dialog interactive component which overlays other contents on a page, such as a dismissible alert, inspector, or subwindow.
+*/
+
+export interface DialogProps {
+    open: boolean
+    closeOnBackdropClick: boolean
+    onClose(): void
+    children: React.ReactNode
+    header?: React.ReactNode
+    footer?: React.ReactNode
 }
 
-interface Dialogprops {
-  children: React.ReactNode,
-  variant: Dialogvariant,
-  close(): void,
-  onBackdropClick(): void,
-  isOpen: boolean,
+interface CustomDialogElement extends HTMLElement {
+    showModal(): void
+    open: boolean
+    close(): void
 }
 
-const Dialog = ({ close, children, variant, onBackdropClick, isOpen }: Dialogprops) => {
-  let wrapperHtmlEl: keyof JSX.IntrinsicElements = 'aside';
-  let contentHtmlEl: keyof JSX.IntrinsicElements = 'section';
-  let wrapperClassName = `${style.dialogWrapper} ${isOpen ? style.dialogWrapperVisible : ''} `;
-  let contentClassName = `${style.dialogContent} `;
+const Dialog = (
+    {
+        open,
+        onClose,
+        header,
+        footer,
+        children,
+        closeOnBackdropClick,
+    }: DialogProps
+) => {
+    // const [hideDialogClass, setHideDialogClass] = React.useState('')
+    const [ref, setRef] = React.useState<React.RefObject<CustomDialogElement>>(null)
 
-  switch (variant) {
-    case Dialogvariant.LEFTSIDEMENU:
-      contentClassName += style.leftsideMenu;
-      break;
-
-    case Dialogvariant.RIGHTSIDEMENU:
-      contentClassName += style.rightsideMenu;
-      break;
-
-    default:
-      wrapperHtmlEl = 'div';
-      contentHtmlEl = 'dialog';
-      contentClassName += style.default;
-      wrapperClassName += style.dialogWrapperDialog
-      break;
-  }
-
-  const onEscClicked = React.useCallback((e: KeyboardEvent) => {
-    if (isOpen && e.code === 'Escape' && close) {
-      close();
+    const handleClose = () => {
+        if (ref) {
+            console.log('handleClose function is called', style.hide)
+            const closer = (e) => {
+                // only close dialog if animation is for hide dialog content
+                if (style?.['hide-dialog-content'] === e?.animationName) {
+                    ref?.current?.classList.remove(style.hide)
+                    onClose()
+                    ref?.current?.close?.()
+                    window.removeEventListener("webkitAnimationEnd", closer)
+                }
+            }
+            ref?.current?.classList.add(style.hide)
+            // only when closing dialog add event listener to run closer function when animation has finished
+            window.addEventListener("webkitAnimationEnd", closer)
+        }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen]);
 
-  React.useEffect(() => {
-    document.addEventListener("keydown", onEscClicked);
-    return () => document.removeEventListener("keydown", onEscClicked);
-  }, [onEscClicked]);
+    const handleBackdropClick = () => {
+        if (closeOnBackdropClick) {
+            handleClose()
+        }
+    }
 
-  return (
-    <DynamicElement
-      el={wrapperHtmlEl}
-      onClick={onBackdropClick}
-      className={wrapperClassName}
-    >
-      <DynamicElement<'dialog'>
-        el={contentHtmlEl}
-        className={contentClassName}
-        open={isOpen}
-        onClick={(e) => { e.stopPropagation(); }}
-      >
-        {close && (
-          <Button
-            customClass={style.closebutton}
-            leftIconName="close"
-            onClick={close}
-          />
-        )}
-        {children}
-      </DynamicElement>
-    </DynamicElement>
-  );
+    // return function to be handled by key down event listener only once ref has changed
+    const handleKeyDown = React.useCallback((event: KeyboardEvent): void => {
+        if (event.code === "Escape") {
+            handleClose()
+        }
+    }, [ref])
+
+    React.useEffect(() => {
+        if (open && !ref?.current?.open) {
+            ref?.current?.showModal?.()
+        }
+    }, [open, ref])
+
+    React.useEffect(() => {
+        window.addEventListener("keydown", handleKeyDown)
+        return () => window.removeEventListener("keydown", handleKeyDown)
+    }, [handleKeyDown])
+
+    React.useEffect(() => {
+        setRef(React.createRef<CustomDialogElement>())
+    }, [])
+
+    return (
+        <dialog
+            className={style.wrapper}
+            ref={ref}
+            onClick={handleBackdropClick}
+        >
+            <section className={style.dialogSection} onClick={preventClickPropagation}>
+                <header className={style.dialogSectionHeader}>
+                    {header}
+                    <Button
+                        onClick={handleClose}
+                        customClass={style.dialogSectionHeaderClose}
+                    >
+                        <i className="material-icons">close</i>
+                    </Button>
+                </header>
+                <div className={style.dialogSectionContent}>
+                    {children}
+                </div>
+                <footer className={style.dialogSectionFooter}>
+                    {footer}
+                </footer>
+            </section>
+        </dialog>
+    )
 }
 
 Dialog.defaultProps = {
-  variant: Dialogvariant.DEFAULT,
-  onBackdropClick: () => null,
-  isOpen: false,
-  close: null,
+    footer: null,
+    header: null,
 }
 
-export default Dialog;
+export default Dialog

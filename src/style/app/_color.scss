@@ -43,3 +43,6 @@ $shadow-dark-bottom: functions.pxToRem(0px 4px 2px 0px) rgba(206, 200, 216, 0.5)
 
 $overlay-color: rgba($color-primary-400, 0.45);
 $overlay-color-dark-mode: rgba($color-dark-400, 0.5);
+
+$outline-color: functions.pxToRem(1px) solid rgba($color-dark-400, 0.6);
+$outline-color-dark-mode: functions.pxToRem(1px) solid rgba($color-primary-300, 0.6);
