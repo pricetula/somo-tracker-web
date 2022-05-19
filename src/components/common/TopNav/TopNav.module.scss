@@ -1,8 +1,7 @@
 @use '/src/style/app';
 
 .nav,
-.linksWrapper,
-.logoSidebarbuttonWrapper {
+.linksWrapper {
   @include app.flexbox;
   @include app.align-items(center);
   @include app.justify-content(space-between);
@@ -18,11 +17,6 @@
   padding: app.pxToRem(0px 20px);
 }
 
-.sidebarbutton {
-  margin-right: app.pxToRem(20px);
-}
-
-.sidebarbutton,
 .authMenubutton {
   @include app.device(tablet) {
     display: none;
