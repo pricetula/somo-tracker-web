@@ -12,4 +12,16 @@
   > i ~ span {
     margin-left: app.pxToRem(8px);
   }
+
+  &:focus {
+    outline: app.$outline-color;
+  }
+}
+
+@include app.darkmode {
+  .button {
+    &:focus {
+      outline: app.$outline-color-dark-mode;
+    }
+  }
 }
