@@ -1,5 +1,6 @@
 import React from 'react'
 import preventClickPropagation from 'src/utils/preventClickPropagation'
+import Button from 'src/components/common/Button'
 import style from './Dialog.module.scss'
 
 /*
@@ -90,6 +91,12 @@ const Dialog = (
             <section className={style.dialogSection} onClick={preventClickPropagation}>
                 <header className={style.dialogSectionHeader}>
                     {header}
+                    <Button
+                        onClick={handleClose}
+                        customClass={style.dialogSectionHeaderClose}
+                    >
+                        <i className="material-icons">close</i>
+                    </Button>
                 </header>
                 <div className={style.dialogSectionContent}>
                     {children}

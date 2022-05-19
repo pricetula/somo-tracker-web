@@ -64,6 +64,15 @@ $dialog-min-content-height: calc(#{$dialog-min-height} - (#{$dialog-section-padd
     @include app.flex-direction(column);
     padding: $dialog-section-padding;
 
+    &Header {
+        position: relative;
+
+        &Close {
+            position: absolute;
+            right: 0;  
+        }
+    }
+
     &Content {
         min-height: $dialog-min-content-height;
     }

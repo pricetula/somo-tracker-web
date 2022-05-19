@@ -10,9 +10,9 @@ export interface Buttonprops {
   variant?: Buttonvariant
   leftIconName?: string,
   rightIconName?: string,
-  customClass: string,
+  customClass?: string,
   onClick?: (e: any) => void,
-  children: React.ReactNode,
+  children?: React.ReactNode,
 }
 
 const Button = (props: Buttonprops) => (
@@ -28,6 +28,7 @@ Button.defaultProps = {
   leftIconName: '',
   rightIconName: '',
   children: null,
+  onClick: () => null,
   variant: Buttonvariant.DEFAULT
 }
 
