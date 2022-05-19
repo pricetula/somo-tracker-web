@@ -44,8 +44,7 @@ $dialog-min-content-height: calc(#{$dialog-min-height} - (#{$dialog-section-padd
     border-radius: app.pxToRem(app.$border-radius);
 
     &::backdrop {
-        backdrop-filter: blur(app.pxToRem(1px));
-        background-color: app.$overlay-color;
+        @include app.backdrop-color;
     }
 
     &[open] {
@@ -81,9 +80,5 @@ $dialog-min-content-height: calc(#{$dialog-min-height} - (#{$dialog-section-padd
 @include app.darkmode {
     .wrapper {
         background-color: app.$color-dark-500;
-
-        &::backdrop {
-            background-color: app.$overlay-color-dark-mode;
-        }
     }
 }
