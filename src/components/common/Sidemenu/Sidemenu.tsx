@@ -1,6 +1,5 @@
 import React from 'react';
 import { DialogOpenContext } from 'src/context/dialogOpen';
-import Dialog, { Dialogvariant } from '../Dialog2';
 import style from './Sidemenu.module.scss';
 
 const Sidemenu = () => {
@@ -9,13 +8,7 @@ const Sidemenu = () => {
     dialog.setIsSideMenuOpen(false);
   }
   return (
-    <Dialog
-      variant={Dialogvariant.LEFTSIDEMENU}
-      isOpen={dialog.isSideMenuOpen}
-      onBackdropClick={closeSidemenu}
-    >
-      Content
-    </Dialog>
+    <div>sss</div>
   );
 };
 
