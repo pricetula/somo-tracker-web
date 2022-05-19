@@ -2,6 +2,9 @@
 
 $translate-y-percentage: 10%;
 $animation-duration: 0.4s;
+$dialog-min-height: app.pxToRem(400px);
+$dialog-section-padding: app.pxToRem(20px);
+$dialog-min-content-height: calc(#{$dialog-min-height} - (#{$dialog-section-padding} * 2));
 
 @keyframes show-dialog-content{
     0% {
@@ -37,7 +40,7 @@ $animation-duration: 0.4s;
     margin: app.pxToRem(calc(100px + #{app.$nav-bar-height})) auto 0;
     width: 90%;
     max-width: app.pxToRem(700px);
-    min-height: app.pxToRem(400px);
+    min-height: $dialog-min-height;
     border-radius: app.pxToRem(app.$border-radius);
 
     &::backdrop {
@@ -54,6 +57,16 @@ $animation-duration: 0.4s;
 .hide {
     animation: hide-dialog-content $animation-duration ease normal !important;
     -webkit-animation: hide-dialog-content $animation-duration ease normal !important;
+}
+
+.dialogSection {
+    @include app.flexbox;
+    @include app.flex-direction(column);
+    padding: $dialog-section-padding;
+
+    &Content {
+        min-height: $dialog-min-content-height;
+    }
 }
 
 @include app.darkmode {

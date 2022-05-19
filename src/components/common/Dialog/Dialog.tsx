@@ -1,4 +1,5 @@
 import React from 'react'
+import preventClickPropagation from 'src/utils/preventClickPropagation'
 import style from './Dialog.module.scss'
 
 /*
@@ -57,6 +58,7 @@ const Dialog = (
         }
     }
 
+    // return function to be handled by key down event listener only once ref has changed
     const handleKeyDown = React.useCallback((event: KeyboardEvent): void => {
         event?.preventDefault?.()
         if (event.code === "Escape") {
@@ -85,14 +87,14 @@ const Dialog = (
             ref={ref}
             onClick={handleBackdropClick}
         >
-            <section className="dialog-section">
-                <header className="dialog-section__header">
+            <section className={style.dialogSection} onClick={preventClickPropagation}>
+                <header className={style.dialogSectionHeader}>
                     {header}
                 </header>
-                <div className="dialog-section__content">
+                <div className={style.dialogSectionContent}>
                     {children}
                 </div>
-                <footer className="dialog-section__footer">
+                <footer className={style.dialogSectionFooter}>
                     {footer}
                 </footer>
             </section>
