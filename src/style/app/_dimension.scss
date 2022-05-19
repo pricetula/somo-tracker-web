@@ -14,6 +14,6 @@
 }
 
 @mixin box($v) {
-  height:  functions($v);
-  width:  functions($v);
+  height:  functions.pxToRem($v);
+  width:  functions.pxToRem($v);
 }

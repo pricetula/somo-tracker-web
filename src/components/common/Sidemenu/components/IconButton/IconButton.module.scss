@@ -3,5 +3,10 @@
 .wrapper {
     @include app.flexbox;
     @include app.flex-center;
-    width: app.pxToRem(40px);
+    @include app.box(30px);
+    border-radius: 50%;
+
+    &:hover {
+        background-color: rgba(black, 0.2);
+    }
 }
