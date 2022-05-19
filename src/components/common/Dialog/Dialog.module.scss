@@ -1,0 +1,63 @@
+@use '/src/style/app';
+
+$translate-y-percentage: 10%;
+$animation-duration: 0.4s;
+
+@keyframes show-dialog-content{
+    0% {
+        opacity: 0;
+        transform: translateY($translate-y-percentage);
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes hide-dialog-content{
+    0% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+    90% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY($translate-y-percentage);
+    }
+}
+
+.wrapper {
+    border: none;
+    background-color: app.$color-primary-100;
+    margin: app.pxToRem(calc(100px + #{app.$nav-bar-height})) auto 0;
+    width: 90%;
+    max-width: app.pxToRem(700px);
+    min-height: app.pxToRem(400px);
+    border-radius: app.pxToRem(app.$border-radius);
+
+    &::backdrop {
+        backdrop-filter: blur(app.pxToRem(1px));
+        background-color: app.$overlay-color-dark-mode;
+    }
+
+    &[open] {
+        animation: show-dialog-content $animation-duration ease normal;
+        -webkit-animation: show-dialog-content $animation-duration ease normal;
+    }
+}
+
+.hide {
+    animation: hide-dialog-content $animation-duration ease normal !important;
+    -webkit-animation: hide-dialog-content $animation-duration ease normal !important;
+}
+
+@include app.darkmode {
+    .wrapper {
+        background-color: app.$color-dark-500;
+    }
+}
