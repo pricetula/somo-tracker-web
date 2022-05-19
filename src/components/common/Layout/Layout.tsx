@@ -12,7 +12,7 @@ function Layout({ children }: { children: ReactNode }) {
       <TopNav />
       <Sidemenu />
       <main className={style.main}>
-        {/* <Links /> */}
+        <Links />
         <section className={style.content}>
           {children}
         </section>
