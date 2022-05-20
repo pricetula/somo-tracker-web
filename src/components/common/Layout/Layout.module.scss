@@ -3,11 +3,12 @@
 .main {
   @include app.flexbox;
   position: relative;
-  min-height: app.pxToRem(app.$app-content-min-height);
+  height: app.pxToRem(app.$app-content-min-height);
   margin-top: app.pxToRem(app.$nav-bar-height);
 }
 
 .content {
-  padding: app.pxToRem(28px 0px 0px);
+  padding: app.pxToRem(28px 0px 0px 80px);
   flex-grow: 1;
+  overflow-y: auto;
 }

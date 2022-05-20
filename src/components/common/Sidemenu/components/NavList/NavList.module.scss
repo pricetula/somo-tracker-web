@@ -5,7 +5,7 @@
     width: 0;
     padding: app.pxToRem(8px 0px 0px 0px);
     margin-left: app.pxToRem(10px);
-    border-left: app.pxToRem(1px) solid rgba(app.$color-dark-300, 0.4);
+    border-left: app.pxToRem(1px) solid rgba(app.$color-dark-300, 0.1);
     transition: all app.$animation-duration ease-in-out;
     transform: translateX(calc((#{common.$detail-width} + 10px) * -1));
 }

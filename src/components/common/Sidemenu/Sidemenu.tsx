@@ -15,7 +15,7 @@ const Sidemenu = () => {
             <aside className={style.wrapper}>
                 <div className={style.search}>
                     <IconButton
-                        iconName={expanded ? 'arrow_forward_ios' : 'arrow_back_ios'}
+                        iconName={!expanded ? 'arrow_forward_ios' : 'arrow_back_ios'}
                         onClick={() => setExpanded(!expanded)}
                     />
                 </div>
