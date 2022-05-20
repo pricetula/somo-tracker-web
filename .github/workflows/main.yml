@@ -23,8 +23,8 @@ jobs:
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }} #Must be unique in Heroku
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
           usedocker: true
-          dontuseforce: true
-          dontautocreate: true
+          dontuseforce: 1
+          dontautocreate: 1
 
 # #------------------------------------------------------------------------------------------------------------------------------
 # # A workflow run is made up of one or more jobs that can run sequentially or in parallel
