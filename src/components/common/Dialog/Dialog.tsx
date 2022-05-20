@@ -37,7 +37,6 @@ const Dialog = (
 
     const handleClose = () => {
         if (ref) {
-            console.log('handleClose function is called', style.hide)
             const closer = (e) => {
                 // only close dialog if animation is for hide dialog content
                 if (style?.['hide-dialog-content'] === e?.animationName) {
@@ -62,6 +61,7 @@ const Dialog = (
     // return function to be handled by key down event listener only once ref has changed
     const handleKeyDown = React.useCallback((event: KeyboardEvent): void => {
         if (event.code === "Escape") {
+            event?.preventDefault?.()
             handleClose()
         }
     }, [ref])
