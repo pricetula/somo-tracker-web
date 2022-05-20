@@ -7,8 +7,8 @@ export interface NavListProps {
 
 const NavList = ({ expanded }: NavListProps) => {
     return (
-        <ul className={style.wrapper}>
-            <li></li>
+        <ul className={`${style.wrapper} ${expanded ? style.expanded : ''}`}>
+            <li>Example</li>
         </ul>
     )
 }

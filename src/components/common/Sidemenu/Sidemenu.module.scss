@@ -2,6 +2,8 @@
 @use './common';
 
 .wrapper {
+    @include app.flexbox;
+    @include app.flex-direction(column);
     position: fixed;
     background-color: app.$color-primary-100;
     height: app.pxToRem(app.$app-content-min-height);
@@ -13,6 +15,13 @@
     padding-bottom: app.pxToRem(16px);
     margin-bottom: app.pxToRem(8px);
     border-bottom: app.pxToRem(1px) solid rgba(app.$color-dark-300, 0.4);
+}
+
+.navigation {
+    @include app.flexbox;
+    flex-grow: 2;
+    overflow-x: hidden;
+    background-color: inherit;
 }
 
 @include app.darkmode {

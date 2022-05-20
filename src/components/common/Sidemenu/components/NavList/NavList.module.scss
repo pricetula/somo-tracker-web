@@ -1,0 +1,13 @@
+@use '/src/style/app';
+@use '../../common';
+
+.wrapper {
+    width: 0;
+    transition: all app.$animation-duration ease-in-out;
+    transform: translateX(calc(#{common.$detail-width} * -1));
+}
+
+.expanded {
+    width: common.$detail-width;
+    transform: translateX(0);
+}
