@@ -10,6 +10,22 @@
     padding: app.pxToRem(16px 8px);
 }
 
+.backdrop {
+    top: 0;
+    position: fixed;
+    height: 100%;
+    width: 100vw;
+    position: absolute;
+    opacity: 0;
+    display: none;
+    @include app.backdrop-color;
+}
+
+.expandedBackdrop {
+    opacity: 1;
+    display: block;
+}
+
 .search {
     height: common.$top-section-height;
     padding-bottom: app.pxToRem(16px);
@@ -27,5 +43,11 @@
 @include app.darkmode {
     .wrapper {
         background-color: app.$color-dark-400;
+    }
+}
+
+@include app.device(tablet) {
+    .backdrop {
+        display: none;
     }
 }

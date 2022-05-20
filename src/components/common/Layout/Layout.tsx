@@ -9,10 +9,10 @@ function Layout({ children }: { children: ReactNode }) {
     <>
       <TopNav />
       <main className={style.main}>
-        <Sidemenu />
         <section className={style.content}>
           {children}
         </section>
+        <Sidemenu />
       </main>
       <Footer />
     </>
