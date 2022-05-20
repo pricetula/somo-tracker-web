@@ -8,14 +8,13 @@
 }
 
 .content {
-    padding: app.pxToRem(28px 0px 0px);
-    margin-left: app.pxToRem(80px);
+    padding: app.pxToRem(28px 0px 0px 80px);
     flex-grow: 1;
     overflow-y: auto;
 }
 
 @include app.device(desktop) {
     .content {
-        margin-left: app.pxToRem(288px);
+        padding-left: app.pxToRem(288px);
     }
 }

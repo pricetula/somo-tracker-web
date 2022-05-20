@@ -6,7 +6,28 @@
     @include app.box(32px);
     border-radius: 50%;
 
+    & > i {
+        color: app.$color-dark-400;
+    }
+
     &:hover {
-        background-color: rgba(black, 0.2);
+        background-color: rgba(app.$color-dark-200, 0.2);
+    }
+}
+
+@include app.device(desktop) {
+    .wrapper {
+        @include app.box(24px);
+        & > i {
+            font-size: app.pxToRem(16px);
+        }
+    }
+}
+
+@include app.darkmode {
+    .wrapper {
+        & > i {
+            color: app.$color-dark-100;
+        }
     }
 }
