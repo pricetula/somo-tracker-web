@@ -46,7 +46,7 @@
     }
 }
 
-@include app.device(tablet) {
+@include app.device(desktop) {
     .backdrop {
         display: none;
     }
