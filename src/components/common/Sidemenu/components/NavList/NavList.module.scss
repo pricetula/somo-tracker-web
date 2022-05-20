@@ -3,11 +3,15 @@
 
 .wrapper {
     width: 0;
+    padding: app.pxToRem(8px 0px 0px 0px);
+    margin-left: app.pxToRem(10px);
+    border-left: app.pxToRem(1px) solid rgba(app.$color-dark-300, 0.4);
     transition: all app.$animation-duration ease-in-out;
-    transform: translateX(calc(#{common.$detail-width} * -1));
+    transform: translateX(calc((#{common.$detail-width} + 10px) * -1));
 }
 
 .expanded {
+    padding-left: app.pxToRem(16px);
     width: common.$detail-width;
     transform: translateX(0);
 }
