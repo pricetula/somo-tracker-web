@@ -20,6 +20,8 @@ interface CustomDialogElement extends HTMLElement {
     showModal(): void
     open: boolean
     close(): void
+    returnValue: any,
+    show: any
 }
 
 const Dialog = (
@@ -32,7 +34,6 @@ const Dialog = (
         closeOnBackdropClick,
     }: DialogProps
 ) => {
-    // const [hideDialogClass, setHideDialogClass] = React.useState('')
     const [ref, setRef] = React.useState<React.RefObject<CustomDialogElement>>(null)
 
     const handleClose = () => {
