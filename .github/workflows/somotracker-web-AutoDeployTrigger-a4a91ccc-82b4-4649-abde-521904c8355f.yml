@@ -8,7 +8,7 @@ on:
       [ main ]
     paths:
     - '**'
-    - '.github/workflows/somotracker-web-AutoDeployTrigger-e2170ad6-0cce-4298-8593-a9b68a169e87.yml'
+    - '.github/workflows/somotracker-web-AutoDeployTrigger-a4a91ccc-82b4-4649-abde-521904c8355f.yml'
 
   # Allow mannually trigger 
   workflow_dispatch:      
