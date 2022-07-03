@@ -3,6 +3,7 @@
 
 .wrapper {
     width: 0;
+    min-height: 200vh;
     padding: app.pxToRem(8px 0px 0px 0px);
     margin-left: app.pxToRem(10px);
     border-left: app.pxToRem(1px) solid rgba(app.$color-dark-300, 0.1);

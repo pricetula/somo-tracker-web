@@ -37,6 +37,7 @@
     @include app.flexbox;
     flex-grow: 2;
     overflow-x: hidden;
+    overflow-y: auto;
     background-color: inherit;
 }
 
