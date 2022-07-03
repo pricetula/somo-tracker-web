@@ -40,12 +40,6 @@
     background-color: inherit;
 }
 
-@include app.darkmode {
-    .wrapper {
-        background-color: app.$color-dark-400;
-    }
-}
-
 @include app.device(desktop) {
     .backdrop {
         display: none;

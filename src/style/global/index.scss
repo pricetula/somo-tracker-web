@@ -39,13 +39,3 @@ body {
     }
   }
 }
-
-@include app.darkmode {
-  * {
-    color: app.$color-dark-100;
-  }
-
-  body {
-    background: app.$color-dark-500;
-  }
-}

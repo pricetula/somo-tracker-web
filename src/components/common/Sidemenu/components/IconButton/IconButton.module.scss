@@ -23,11 +23,3 @@
         }
     }
 }
-
-@include app.darkmode {
-    .wrapper {
-        & > i {
-            color: app.$color-dark-100;
-        }
-    }
-}

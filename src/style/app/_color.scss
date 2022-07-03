@@ -1,5 +1,4 @@
 @use './functions';
-@use './darkmode';
 
 $color-primary-500: #003b76;
 $color-primary-400: #0080ff;
@@ -45,8 +44,4 @@ $outline-color-dark-mode: functions.pxToRem(1px) solid rgba($color-primary-300, 
 @mixin backdrop-color() {
     backdrop-filter: blur(functions.pxToRem(1px));
     background-color: $overlay-color;
-
-    @include darkmode.darkmode {
-        background-color: $overlay-color-dark-mode;
-    }
 }

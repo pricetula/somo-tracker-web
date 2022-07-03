@@ -22,9 +22,3 @@
     display: none;
   };
 }
-
-@include app.darkmode {
-  .nav {
-    background-color: app.$color-dark-400;
-  }
-}
