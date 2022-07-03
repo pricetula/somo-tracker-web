@@ -1,6 +1,5 @@
 import React from 'react'
 import IconButton from './components/IconButton'
-import IconList from './components/IconList'
 import NavList from './components/NavList'
 import style from './Sidemenu.module.scss'
 
@@ -20,7 +19,6 @@ const Sidemenu = () => {
                     />
                 </div>
                 <div className={style.navigation}>
-                    <IconList />
                     <NavList expanded={expanded} />
                 </div>
             </aside>
