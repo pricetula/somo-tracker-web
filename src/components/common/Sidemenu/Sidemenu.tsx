@@ -13,10 +13,10 @@ const Sidemenu = () => {
             />
             <aside className={style.wrapper}>
                 <div className={style.search}>
-                    <IconButton
+                    {/* <IconButton
                         iconName={!expanded ? 'arrow_forward_ios' : 'arrow_back_ios'}
                         onClick={() => setExpanded(!expanded)}
-                    />
+                    /> */}
                 </div>
                 <div className={style.navigation}>
                     <NavList expanded={expanded} />

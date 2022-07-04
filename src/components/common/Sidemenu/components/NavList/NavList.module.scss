@@ -2,7 +2,7 @@
 @use '../../common';
 
 .wrapper {
-    width: app.pxToRem(48px);
+    // width: app.pxToRem(48px);
     min-height: 200vh;
     background-color: red;
     padding-top: app.pxToRem(16px);

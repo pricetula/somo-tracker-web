@@ -8,13 +8,14 @@
 }
 
 .content {
-    padding: app.pxToRem(28px 0px 0px 80px);
+    padding: app.pxToRem(0px 8px 0px);
+    margin-left: app.pxToRem(app.$sidemenu-closed-width);
     flex-grow: 1;
     overflow-y: auto;
 }
 
 @include app.device(desktop) {
     .content {
-        padding-left: app.pxToRem(288px);
+        margin-left: app.pxToRem(app.$sidemenu-open-width);
     }
 }
