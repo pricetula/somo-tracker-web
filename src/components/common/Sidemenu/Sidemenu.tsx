@@ -11,13 +11,16 @@ const Sidemenu = () => {
                 className={`${style.backdrop} ${expanded ? style.expandedBackdrop : ''}`}
                 onClick={() => setExpanded(false)}
             />
-            <aside className={style.wrapper}>
+
+            <aside className={`${style.wrapper} ${expanded ? style.expanded : ''}`}>
                 <div className={style.search}>
-                    {/* <IconButton
-                        iconName={!expanded ? 'arrow_forward_ios' : 'arrow_back_ios'}
+                    <IconButton
+                        customClass={style.expander}
+                        iconName={!expanded ? 'keyboard_double_arrow_right' : 'keyboard_double_arrow_left'}
                         onClick={() => setExpanded(!expanded)}
-                    /> */}
+                    />
                 </div>
+
                 <div className={style.navigation}>
                     <NavList expanded={expanded} />
                 </div>
