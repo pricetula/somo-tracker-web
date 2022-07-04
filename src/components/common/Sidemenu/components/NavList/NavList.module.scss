@@ -2,14 +2,19 @@
 @use '../../common';
 
 .wrapper {
-    width: 0;
+    width: app.pxToRem(48px);
     min-height: 200vh;
-    padding: app.pxToRem(8px 0px 0px 0px);
-    transition: all app.$animation-duration ease-in-out;
-    transform: translateX(calc((#{common.$detail-width} + 10px) * -1));
+    background-color: red;
+    padding-top: app.pxToRem(16px);
+    // transition: all app.$animation-duration ease-in-out;
+    // transform: translateX(calc((#{common.$detail-width} + 10px) * -1));
 }
 
 .expanded {
-    width: common.$detail-width;
-    transform: translateX(0);
+    // width: common.$detail-width;
+    // transform: translateX(0);
+}
+
+.linkWrapper {
+    background-color: white;
 }
