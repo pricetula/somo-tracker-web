@@ -1,6 +1,6 @@
 import React from 'react'
+import Search from '../Search';
 import IconButton from './components/IconButton'
-import IconList from './components/IconList'
 import NavList from './components/NavList'
 import style from './Sidemenu.module.scss'
 
@@ -12,15 +12,18 @@ const Sidemenu = () => {
                 className={`${style.backdrop} ${expanded ? style.expandedBackdrop : ''}`}
                 onClick={() => setExpanded(false)}
             />
-            <aside className={style.wrapper}>
+
+            <aside className={`${style.wrapper} ${expanded ? style.expanded : ''}`}>
                 <div className={style.search}>
+                    <Search />
                     <IconButton
-                        iconName={!expanded ? 'arrow_forward_ios' : 'arrow_back_ios'}
+                        customClass={style.expander}
+                        iconName={!expanded ? 'keyboard_double_arrow_right' : 'keyboard_double_arrow_left'}
                         onClick={() => setExpanded(!expanded)}
                     />
                 </div>
+
                 <div className={style.navigation}>
-                    <IconList />
                     <NavList expanded={expanded} />
                 </div>
             </aside>

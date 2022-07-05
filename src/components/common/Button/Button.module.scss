@@ -17,11 +17,3 @@
     outline: app.$outline-color;
   }
 }
-
-@include app.darkmode {
-  .button {
-    &:focus {
-      outline: app.$outline-color-dark-mode;
-    }
-  }
-}

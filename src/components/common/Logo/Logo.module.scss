@@ -1,7 +1,6 @@
 @use 'sass:math';
 @use '/src/style/app/functions';
 @use '/src/style/app/color';
-@use '/src/style/app/darkmode';
 
 $logo-dimension: 1em;
 $logo-text-space: 0;
@@ -97,21 +96,6 @@ $text-translate-y: 0.1em;
       animation-name: bottom-icon-animation;
       animation-duration: $animation-duration;
       left: calc(-1 * #{$icon-offset});
-    }
-  }
-}
-
-@include darkmode.darkmode {
-  .logo {
-    .text {
-        color: color.$color-primary-100;
-    }
-
-    .icon {
-        &::after,
-        &::before {
-          background-color:color.$color-primary-300;
-        }
     }
   }
 }

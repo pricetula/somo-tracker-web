@@ -6,8 +6,6 @@ $nav-bar-height: 72px;
 
 $footer-height: 32px;
 
-$sidemenu-width: 300px;
-
 $border-radius: 16px;
 
 $container-width: 1920px;
@@ -15,3 +13,8 @@ $container-width: 1920px;
 $app-content-min-height: calc(100vh - (#{$nav-bar-height} + #{$footer-height}));
 
 $animation-duration: 0.4s;
+
+// side menu
+$sidemenu-open-width: 320px;
+
+$sidemenu-closed-width: 48px;

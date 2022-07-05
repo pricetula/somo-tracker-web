@@ -76,9 +76,3 @@ $dialog-min-content-height: calc(#{$dialog-min-height} - (#{$dialog-section-padd
         min-height: $dialog-min-content-height;
     }
 }
-
-@include app.darkmode {
-    .wrapper {
-        background-color: app.$color-dark-500;
-    }
-}

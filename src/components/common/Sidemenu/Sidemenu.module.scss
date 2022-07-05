@@ -7,15 +7,20 @@
     position: fixed;
     background-color: app.$color-primary-100;
     height: app.pxToRem(app.$app-content-min-height);
-    padding: app.pxToRem(16px 8px);
+    padding: app.pxToRem(8px);
+    width: app.$sidemenu-closed-width;
+    transition: width app.$animation-duration ease-in-out;
+
+    &.expanded {
+        width: app.$sidemenu-open-width;
+    }
 }
 
 .backdrop {
     top: 0;
-    position: fixed;
+    position: absolute;
     height: 100%;
     width: 100vw;
-    position: absolute;
     opacity: 0;
     display: none;
     @include app.backdrop-color;
@@ -27,23 +32,28 @@
 }
 
 .search {
-    height: common.$top-section-height;
-    padding-bottom: app.pxToRem(16px);
+    position: relative;
+    @include app.flexbox;
+    @include app.align-items(center);
     margin-bottom: app.pxToRem(8px);
-    border-bottom: app.pxToRem(1px) solid rgba(app.$color-dark-300, 0.1);
+
+    .expander {
+        @include app.box(20px);
+        position: absolute;
+        right: 0;
+
+        & > i {
+            font-size: app.pxToRem(16px);
+        }
+    }
 }
 
 .navigation {
     @include app.flexbox;
     flex-grow: 2;
     overflow-x: hidden;
+    overflow-y: auto;
     background-color: inherit;
-}
-
-@include app.darkmode {
-    .wrapper {
-        background-color: app.$color-dark-400;
-    }
 }
 
 @include app.device(desktop) {
