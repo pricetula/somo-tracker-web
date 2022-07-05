@@ -1,0 +1,16 @@
+@use '/src/style/app';
+
+.wrapper {
+    border: none;
+    font-size: app.pxToRem(14px);
+    height: app.pxToRem(32px);
+    padding: app.pxToRem(8px 16px);
+    border-radius: app.pxToRem(app.$border-radius);
+    background-color: app.$color-primary-100;
+    outline: app.$outline-color;
+    width: 100%;
+
+    &:focus {
+        background-color: darken(app.$color-primary-100, 2%);
+    }
+}

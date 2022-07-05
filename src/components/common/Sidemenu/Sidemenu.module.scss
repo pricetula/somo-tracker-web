@@ -33,8 +33,8 @@
 
 .search {
     position: relative;
-    height: common.$top-section-height;
-    padding-bottom: app.pxToRem(16px);
+    @include app.flexbox;
+    @include app.align-items(center);
     margin-bottom: app.pxToRem(8px);
 
     .expander {
